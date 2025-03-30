@@ -9,6 +9,7 @@
     <title>PROДетали</title>
     <link rel="stylesheet" href="./src/css/normalize.css" />
     <link rel="stylesheet" href=".//src/css/style.css" />
+    <link rel="stylesheet" href=".//src/css/constractorPA.css" />
     <link
       href="https://myfonts.ru/myfonts?fonts=bookman-old-style"
       rel="stylesheet"
@@ -87,9 +88,12 @@
           <div class="profile__wrapper">
             <div class="profile__container">
               <div class="profile__content-left">
-                <img src="" alt="" class="profile__image" /><button
+                <img src="./public/default_logo.png" alt="" class="profile__image" />
+                <button
                   class="profile__image-upload"
-                ></button>
+                > 
+                  <img src="./public/logo_add_clip-button.svg" alt="logo_upload" class="profile__image-upload-clip">
+                </button>
               </div>
               <div class="profile__content-right">
                 <form action="" class="profile__form">
@@ -105,7 +109,7 @@
                   /><input
                     placeholder="Иванович"
                     type="text"
-                    class="profile__input"
+                    class="profile__input profile__input-patronymic" 
                   />
                   <input
                     placeholder="+7 (999) 999-99-99"
@@ -122,7 +126,7 @@
                     class="profile__input"
                   />
                   <p class="profile__text">
-                    * — поле для обязательного заполнения
+                     — поле для обязательного заполнения
                   </p>
                 </form>
               </div>

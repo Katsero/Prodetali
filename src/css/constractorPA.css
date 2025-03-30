@@ -1,0 +1,135 @@
+@font-face {
+    font-family: "Bookman";
+    src: url("../fonts/BookmanOldStyle/bookman_old_style_gras.woff2")
+      format("woff2");
+  }
+  @font-face {
+    font-family: "RobotoMedium";
+    src: url("../fonts/Roboto/Roboto-Light.ttf") format("truetype");
+  }
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Bookman Old Style", arial;
+    --text: #0f2346;
+    --white-text: #bcc0c3;
+    --orange-accent: #cc5722;
+    --blue-accent: #0f2346;
+    --grey-accent: #657996;
+  }
+.header__source {
+    padding: 1.5rem 2.5rem;
+    background-color: var(--blue-accent);
+    color: white;
+    font-size: 1.6rem;
+    font-family: "RobotoMedium";
+}
+.main__wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    margin: 0;
+}
+.main__navigation {
+    margin: 0;
+    padding: 5rem 2rem;
+}
+.main__navigation-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.main__navigation-button{
+    border: 0;
+    background-color: inherit;
+    color: var(--text);
+    font-size: 2rem;
+    padding: 1rem 5rem;
+    border-radius: 2rem;
+    font-family: "RobotoMedium";
+    font-weight: 600;
+}
+.main__wrapper section {
+    margin: 0;
+    width: 100%;
+    padding: 7rem 5rem;
+}
+.profile__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 9rem;
+    margin: auto;
+}
+.profile__container {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
+.profile__content-left {
+    position: relative;
+    border: 3px dashed var(--blue-accent);
+    margin: 0 5rem auto 5rem;
+    background-color: #F5F5F5;
+    padding: 0 3rem;
+    border-radius: 3rem;
+}
+.profile__image {
+    position: relative;
+    bottom: 3rem;
+    overflow: hidden;
+}
+.profile__image-upload {
+    border: 0;
+    background-color: inherit;
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    background-color: var(--blue-accent);
+    border-radius: 4rem;
+    padding: 1.7rem;
+}
+
+.profile__content-right {
+    margin: 0;
+    width: 100%;
+}
+.profile__form {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    max-width: 64rem;
+    width: 100%;
+    margin: 0 auto;
+}
+.profile__input {
+    padding: 2rem 3rem;
+    border-radius: 1rem;
+    border: 1px solid var(--orange-accent);
+    font-size: 2.8rem;
+    color: var(--text);
+}
+.profile__text {
+    position: relative;
+    top: -3rem;
+    font-size: 1.6rem;
+    color: #BCC0C3;
+    margin: 0 0 0 auto;
+}
+.profile__text::before{
+    position: relative;
+    top: 1rem;
+    content: "*";
+    font-size: 3.6rem;
+    color: #B02525;
+}
+.profile__button {
+    margin: 0 auto;
+    max-width: 35rem;
+    padding: 1.5rem 3.5rem;
+    font-size: 2.4rem;
+    color: #E9E9E9;
+    background-color: var(--orange-accent);
+    border: 0;
+    border-radius: 6rem;
+}
