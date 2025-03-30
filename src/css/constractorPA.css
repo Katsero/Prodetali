@@ -38,13 +38,13 @@
 .main__navigation-list {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
 }
 .main__navigation-button{
     border: 0;
     background-color: inherit;
     color: var(--text);
-    font-size: 2rem;
+    font-size: 1.4rem;
     padding: 1rem 5rem;
     border-radius: 2rem;
     font-family: "RobotoMedium";
@@ -53,12 +53,13 @@
 .main__wrapper section {
     margin: 0;
     width: 100%;
-    padding: 7rem 5rem;
+    padding: 5rem 3rem;
 }
 .profile__wrapper {
+    max-width: 120rem;
     display: flex;
     flex-direction: column;
-    gap: 9rem;
+    gap: 7rem;
     margin: auto;
 }
 .profile__container {
@@ -67,16 +68,17 @@
     margin: 0;
 }
 .profile__content-left {
+    max-width: 28rem;
     position: relative;
     border: 3px dashed var(--blue-accent);
     margin: 0 5rem auto 5rem;
     background-color: #F5F5F5;
-    padding: 0 3rem;
+    padding: 0 0.5rem;
     border-radius: 3rem;
 }
 .profile__image {
     position: relative;
-    bottom: 3rem;
+    bottom: 2rem;
     overflow: hidden;
 }
 .profile__image-upload {
@@ -87,7 +89,11 @@
     right: -1.5rem;
     background-color: var(--blue-accent);
     border-radius: 4rem;
-    padding: 1.7rem;
+    padding: 1.2rem;
+}
+.profile__image-upload-clip {
+    max-width: 3rem;
+    max-height: 3rem;
 }
 
 .profile__content-right {
@@ -97,22 +103,22 @@
 .profile__form {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
-    max-width: 64rem;
+    gap: 2rem;
+    max-width: 60rem;
     width: 100%;
     margin: 0 auto;
 }
 .profile__input {
-    padding: 2rem 3rem;
+    padding: 1rem 2rem;
     border-radius: 1rem;
     border: 1px solid var(--orange-accent);
-    font-size: 2.8rem;
+    font-size: 2rem;
     color: var(--text);
 }
 .profile__text {
     position: relative;
     top: -3rem;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: #BCC0C3;
     margin: 0 0 0 auto;
 }
@@ -120,16 +126,63 @@
     position: relative;
     top: 1rem;
     content: "*";
-    font-size: 3.6rem;
+    font-size: 3.2rem;
     color: #B02525;
 }
-.profile__button {
+.profile__button, .services__button {
     margin: 0 auto;
     max-width: 35rem;
-    padding: 1.5rem 3.5rem;
-    font-size: 2.4rem;
+    padding: 1.5rem 3rem;
+    font-size: 1.6rem;
     color: #E9E9E9;
     background-color: var(--orange-accent);
     border: 0;
     border-radius: 6rem;
+}
+.services__grid {
+    max-width: 120rem;
+    margin: 0;
+    padding: 3rem 6rem;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, minmax(100px, 1fr));
+    gap: 4rem;
+  }
+.services__wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.services__container {
+    max-width: 48rem;
+    display: flex;
+    flex-direction: row;
+    border-radius: 4.6rem;
+    border: 0.1rem solid #C4C4C4;
+    width: 100%;
+}
+.services__content-left {
+    margin: 0;
+}
+.services__content-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+    margin: 0;
+}
+.services__block-image {
+    border-top-left-radius: 4.6rem;
+    border-bottom-left-radius: 4.6rem;
+    height: 100%;
+}
+.services__title {
+    color: var(--text);
+    font-size: 2rem;
+    font-family: "RobotoMedium";
+}
+.services__description {
+    color: var(--text);
+    font-size: 1.4rem;
+    display: block;
 }
