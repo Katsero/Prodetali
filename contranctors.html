@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PROДетали</title>
+    <link rel="stylesheet" href="./src/css/normalize.css" />
+    <link rel="stylesheet" href=".//src/css/style.css" />
+    <link rel="stylesheet" href=".//src/css/style_contractors.css" />
+    <link href="https://myfonts.ru/myfonts?fonts=bookman-old-style" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <header>
+        <div class="header__container">
+            <div class="header__content-left">
+                <img class="header__logo" src="public/logo_and_text.svg" alt="Main logo here" />
+            </div>
+            <div class="header__content-right">
+                <nav class="header__navigation navigation">
+                    <ul class="navigation__list">
+                        <li class="navigation__item">
+                            <a class="navigation__link" href="">Объявления</a>
+                        </li>
+                        <li class="navigation__item">
+                            <a class="navigation__link" href="">Исполнители</a>
+                        </li>
+                        <li class="navigation__item">
+                            <a class="navigation__link" href="">Услуги</a>
+                        </li>
+                        <li class="navigation__item">
+                            <a class="navigation__link" href="">О нас</a>
+                        </li>
+                        <li class="navigation__item">
+                            <a class="navigation__link" href="">Чат</a>
+                        </li>
+                        <li class="navigation__item">
+                            <a class="navigation__link navigation__authenticate" href="">Войти/Регистрация</a>
+                        </li>
+                    </ul>
+                </nav>
+                <img class="header__icon" src="./public/icon_profile.svg" alt="Profile" />
+            </div>
+        </div>
+    </header>
+    <section class="history">
+        <p class="history__text history__links"><a href="index.html">Главная</a> >> Услуги</p>
+        <p class="history__text history__location">Местоположение: Москва</p>
+    </section>
+    <main>
+        <section class="filters">
+            <div class="filters__category">
+                <h2 class="filters__name">Категория</h2>
+                <select class="filters__select">
+                    <option>Категория</option>
+                </select>
+            </div>
+            <div class="filters__category">
+                <h2 class="filters__name">Подкатегория</h2>
+                <select class="filters__select">
+                    <option>Подкатегория</option>
+                </select>
+            </div>
+            <button class="filters__button">Применить</button>
+        </section>
+        <section class="list">
+            <div class="list__contractor contractor">
+                <div class="contractor__header">
+                    <p class="contractor__name contractor__text">ООО "Металлюга"</p>
+                    <p class="contractor__location contractor__text">г. Москва</p>
+                </div>
+                <div class="contractor__info">
+                    <div class="contractor__left">
+                            <img class="contractor__logo" src="public/contractor_logo.png">
+                            <button class="contractor__button">Подробнее</button>
+                    </div>
+                    <p class="contractor__right">
+                        ООО "Металлюга" – это компания, специализирующаяся на поставках, переработке и производстве
+                        металлических изделий. Мы предлагаем широкий ассортимент продукции, включая прокат черных и цветных
+                        металлов, металлоконструкции, а также услуги по резке, сварке и обработке металла.
+                        <br><br>
+                        Наши преимущества:<br>
+                        ✔ Высокое качество металлопроката и изделий<br>
+                        ✔ Современное оборудование и технологии обработки<br>
+                        ✔ Гибкая ценовая политика и индивидуальный подход к каждому клиенту<br>
+                        ✔ Надежные партнеры и своевременная доставка
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
