@@ -21,6 +21,9 @@
   --blue-accent: #0f2346;
   --grey-accent: #657996;
 }
+a {
+  cursor: pointer;
+}
 body {
   overflow-x: hidden;
 }
@@ -49,6 +52,9 @@ a {
   flex-direction: row;
   gap: 2rem;
 }
+.header__logo {
+  cursor: pointer;
+}
 .header__navigation {
   display: flex;
   align-items: center;
@@ -62,6 +68,9 @@ a {
   list-style: none;
   font-size: 1.8rem;
   color: var(--text);
+}
+.link_to_profile {
+  align-self: center;
 }
 .header__icon {
   align-self: center;
