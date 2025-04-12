@@ -25,13 +25,13 @@ main {
     flex-direction: row;
 }
 .filters {
-    height: 100vh;
     display: flex;
     flex-direction: column;
     width: 40%;
     padding: 2.2rem;
     gap: 3.0rem;
-    border-right: 1px solid black;
+    height: 100vw;
+    border-right: 0.1rem solid black;
 }
 .filters__category {
     width: 100%;
@@ -56,7 +56,10 @@ main {
     color: white;
 }
 .list {
+    display: flex;
+    flex-direction: column;
     padding: 2.5rem;
+    gap: 1.5rem;
 }
 .contractor {
     border: 1px solid #C4C4C4;
