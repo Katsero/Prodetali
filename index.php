@@ -1,3 +1,7 @@
+<?
+include_once __DIR__ . '/_next/php/src/helpers.php';
+$user = currentUser();
+?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -38,14 +42,28 @@
               <a class="navigation__link" href="">Чат</a>
             </li>
             <li class="navigation__item">
-              <a class="navigation__link navigation__authenticate"
-                href="./_next/regist/sign-up.php">Войти/Регистрация</a>
+              <?
+              if (isset($user['id'])) {
+                echo '<a class="navigation__link" href="/Prodetali/_next/regist/account.php">Личный кабинет</a>';
+              } else {
+                echo '<a class="navigation__link" href="/Prodetali/_next/regist/log-in.php">Войти</a>';
+              }
+              ?>
             </li>
           </ul>
         </nav>
-        <a href="./contractorPA.html" class="link_to_profile">
+        <?
+        if (isset($user['id'])) {
+          echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="link_to_profile">
+          <img class="header__icon" src="' . $user['icon'] . '" alt="' . $user['nickname'] . '" />
+        </a>';
+        } else {
+          echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="link_to_profile">
           <img class="header__icon" src="./public/icon_profile.svg" alt="Profile" />
-        </a>
+        </a>';
+          // во время разработки href="/_next/regist/log-in.php" в else будет href="/_next/regist/contractorPA.html"
+        }
+        ?>
       </div>
     </div>
   </header>

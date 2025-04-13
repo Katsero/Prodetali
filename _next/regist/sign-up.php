@@ -1,28 +1,48 @@
 <?php
-ob_start(); // Start output buffering
+ob_start();
 
-// Устанавливаем таймер на 5 секунд
-$time_start = time();
-
+// helpers
 include_once __DIR__ . '/../php/src/helpers.php';
-include_once __DIR__ . '/../php/element.php';
+$pdo = getPDO(); // Initialize connection early
 
-// Запуск сеанса
+// Start session / 
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
 }
 
-$user = currentUser();
+// user data
+$user = null;
+if (isset($_SESSION['user']['id'])) {
+  $stmt = $pdo->prepare("SELECT * FROM users WHERE id = :id");
+  $stmt->execute(['id' => $_SESSION['user']['id']]);
+  $user = $stmt->fetch(\PDO::FETCH_ASSOC);
+}
 
+// Session security
 $current_session_id = session_id();
 session_regenerate_id();
-// Проверьте, изменился ли идентификатор сеанса
 if ($current_session_id != session_id()) {
   unset($_SESSION["code_id"]);
   $_SESSION["tom"] = false;
 }
 
-ob_end_flush(); // Flush the output buffer
+// Process sensor data
+$sensor = $_GET['sensor'] ?? null;
+$sessionId = $_COOKIE['sensor'] ?? null;
+$_SESSION["tom"] = true;
+$_SESSION["block"] = "";
+
+// Validate sensor
+if (!isset($sensor) || $sensor === null || !($sensor == $sessionId)) {
+  header("Location: traker.php");
+  exit;
+}
+
+// Include UI elements
+include_once __DIR__ . '/../php/element.php';
+
+// Flush output buffer
+ob_end_flush();
 
 // Получение датчика из URL-адреса
 $sensor = $_GET['sensor'] ?? null;
@@ -34,39 +54,16 @@ if (!isset($sensor) || $sensor === null || !($sensor == $sessionId)) {
   header("Location: traker.php");
   exit;
 }
-// if ($sessionId != null) {
-//   $_SESSION["block"] = "true";
-// } elseif ($sensor != $sessionId) {
-//   unset($_COOKIE['sensor']);
-//   unset($_SESSION['sensor']);
-//   $_SESSION["tom"] = false;
-//   // Если датчики не совпадают, перенаправление на страницу тракера
-//   header("Location: traker.php");
-//   exit;
-// } elseif (
-//   isset($_SESSION["nickname"]) ||
-//   isset($_SESSION["email"]) ||
-//   isset($_SESSION["password"]) ||
-//   isset($_SESSION["icon"])
-// ) {
-//   unset($_SESSION["nickname"]);
-//   unset($_SESSION["email"]);
-//   unset($_SESSION["password"]);
-//   unset($_SESSION["icon"]);
-//   unset($_COOKIE['sensor']);
-//   unset($_SESSION['sensor']);
-//   $_SESSION["tom"] = false;
-//   header("Location: traker.php");
-//   exit;
-// } else {
-//   $_SESSION["tom"] = true;
-// }
 
-// Проверяем, загрузилась ли страница в течение 5 секунд
-// if (time() - $time_start > 5) {
-//   header("Location: traker.php");
-//   exit;
-// }
+$title7 = $title7_self = "";
+
+if (!isset($user['id'])) {
+  $title7 = 'Войти';
+  $title7_self = "/Prodetali/_next/regist/log-in.php";
+} else {
+  $title7 = "Личный кабинет";
+  $title7_self = "/Prodetali/_next/regist/contractorPA.php";
+}
 ?>
 
 <!DOCTYPE html>
@@ -411,7 +408,7 @@ if (!isset($sensor) || $sensor === null || !($sensor == $sessionId)) {
   <nav class="navbar">
     <div class="logo_item">
       <i class="bx bx-menu" id="sidebarOpen"></i>
-      <img src="/../images/logo.png" alt="gream's" /></i>
+      <img src="../../public/logo_and_text.svg" alt="gream's" /></i>
     </div>
 
     <?php echo $search; ?>

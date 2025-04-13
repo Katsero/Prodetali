@@ -1,5 +1,5 @@
 body.dark {
-    --dar: #333;
+    --dar: #0f2346;
     --bord: 1px solid #fff;
     --whiter-color: #f9f9f9;
     --white-color: #fff;
@@ -13,7 +13,7 @@ body.dark {
     --buttom: #F9F9F9;
     --border-radius: 12px;
     --dark: #000;
-    --navigator: #333;
+    --navigator: #0f2346;
     --input: #252525;
     --nb: #414145;
     --inptext: #b5b5b5;
@@ -21,29 +21,29 @@ body.dark {
     --hh: #7CFFA8;
     --email-block: rgb(0, 0, 0, 0.8);
     --email-background-block: #fbfbfb;
-    --email-title: #000;
+    --email-title: #0f2346;
 }
 
 :root {
     --inptext: gray;
     --input: #fff;
     --whiter-color: transparent;
-    --white-color: #333;
+    --white-color: #0f2346;
     --blue-color: #fff;
     --grey-color: #f2f2f2;
     --content-color: #707070;
     --grey-color-light: #aaa;
-    --bord: 1px solid #333;
+    --bord: 1px solid #0f2346;
     --geist-foreground-rgb: 255, 255, 255;
     --dar: #F9F9F9;
-    --buttom: #333;
+    --buttom: #0f2346;
     --dark: #fff;
-    --navigator: #333;
+    --navigator: #0f2346;
     --nb: gray;
     --hh: #405AB4;
     --hhg: #405AB4;
     --email-block: rgb(255, 255, 255, 0.8);
-    --email-background-block: #000;
+    --email-background-block: #0f2346;
     --email-title: #fff;
 }
 
@@ -55,7 +55,7 @@ body.dark {
 
 .date_reg {
     background: transparent;
-    border: 1px solid #9453FF;
+    border: 1px solid #cc5722;
     border-radius: 7px;
     padding: 5px;
     display: flex;
@@ -63,13 +63,13 @@ body.dark {
     justify-content: center;
     font-weight: 600;
     z-index: 1;
-    color: #9453FF;
+    color: #cc5722;
     transition: all ease 1s;
 }
 
 .bloctime {
     border-radius: 8px;
-    border: 1px solid #9453FF;
+    border: 1px solid #0f2346;
     padding: 2.5px;
     justify-content: center;
     align-items: center;
@@ -162,7 +162,7 @@ body.dark {
 }
 
 .inform h4 {
-    color: #9453FF;
+    color: #cc5722;
     margin-top: 1px !important;
     margin-bottom: 0px !important;
     z-index: 1;
@@ -196,7 +196,7 @@ body.dark {
 
 .ti b {
     font-size: 16px;
-    color: #9453FF;
+    color: #cc5722;
     position: relative;
     margin: 0px 3px;
     top: -15px;
@@ -233,7 +233,6 @@ body.dark {
     justify-content: center;
     text-align: center;
     backdrop-filter: blur(5px);
-    opacity: 0.7;
 }
 
 .form-control-input,
@@ -318,10 +317,9 @@ body.dark {
 }
 
 .circle_inf {
-    background: rgb(32, 177, 108);
+    background: #0f2346;
     animation: shadow 2s ease infinite;
     opacity: 1;
-
 }
 
 .circle_inf_not {
@@ -360,15 +358,15 @@ body.dark {
 
 @keyframes shadow {
     0% {
-        box-shadow: 0px 0px 2px 5px 2px rgb(32, 177, 108, 1);
+        box-shadow: 0px 0px 2px 5px 2px #0f2346;
     }
 
     60% {
-        box-shadow: 0px 0px 15px 5px rgb(32, 177, 108, 1);
+        box-shadow: 0px 0px 15px 5px #0f2346;
     }
 
     100% {
-        box-shadow: 0px 0px 2px 5px 2px rgb(32, 177, 108, 1);
+        box-shadow: 0px 0px 2px 5px 2px #0f2346;
     }
 }
 
@@ -594,11 +592,11 @@ body.dark {
 }
 
 .form-control-check:focus {
-    border: 1px solid #9453FF;
+    border: 1px solid #0f2346;
 }
 
 .form-control-check:focus::placeholder {
-    color: #9453FF;
+    color: #0f2346;
 }
 
 .flexer {

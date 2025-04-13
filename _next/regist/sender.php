@@ -147,7 +147,7 @@ try {
         '>
 
                   <span>
-                      Регистрация - PRO Детали <font color='#7a75f7'>$nickname_post</font>, $time:$date
+                      Регистрация - PRO Детали <font color='#0f2346'>$nickname_post</font>, $time:$date
                   </span>
 
               </div>
@@ -234,8 +234,8 @@ try {
 
                   <p style='
                       transition: all 1s ease;
-  color: #7a75f7;
-  background: rgb(0, 0, 0, 0.5);
+  color: #0f2346;
+  background: rgba(15, 35, 70, 0.5);
   border-radius: 2px;
   font-family: Verdana;
   letter-spacing: 20px;

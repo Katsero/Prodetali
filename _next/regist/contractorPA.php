@@ -8,18 +8,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PROДетали</title>
-  <link rel="stylesheet" href="./src/css/normalize.css" />
-  <link rel="stylesheet" href=".//src/css/style.css" />
-  <link rel="stylesheet" href=".//src/css/constractorPA.css" />
+  <link rel="stylesheet" href="../../src/css/normalize.css" />
+  <link rel="stylesheet" href="../../src/css/style.css" />
+  <link rel="stylesheet" href="../../src/css/constractorPA.css" />
   <link href="https://myfonts.ru/myfonts?fonts=bookman-old-style" rel="stylesheet" type="text/css" />
-  <script src="js/contractorAP.js" defer></script>
+  <script src="../../src/js/contractorAP.js" defer></script>
 </head>
 
 <body>
   <header>
     <div class="header__container">
       <div class="header__content-left">
-        <img class="header__logo" src="public/logo_and_text.svg" alt="Main logo here" />
+        <img class="header__logo" src="../../public/logo_and_text.svg" alt="Main logo here" />
       </div>
       <div class="header__content-right">
         <nav class="header__navigation navigation">
@@ -28,10 +28,10 @@
               <a class="navigation__link" href="">Объявления</a>
             </li>
             <li class="navigation__item">
-              <a class="navigation__link" href="contranctors.html">Исполнители</a>
+              <a class="navigation__link" href="../../contranctors.html">Исполнители</a>
             </li>
             <li class="navigation__item">
-              <a class="navigation__link" href="services.html">Услуги</a>
+              <a class="navigation__link" href="../../services.html">Услуги</a>
             </li>
             <li class="navigation__item">
               <a class="navigation__link" href="">О нас</a>
@@ -40,16 +40,25 @@
               <a class="navigation__link" href="">Чат</a>
             </li>
             <li class="navigation__item">
-              <a class="navigation__link navigation__authenticate"
-                href="./_next/regist/sign-up.php">Войти/Регистрация</a>
+              <?
+              echo '<a class="navigation__link" href="../../index.php">На главную</a>';
+              ?>
             </li>
           </ul>
         </nav>
-        <a href="./contractorPA.html" class="link_to_profile">
-          <img class="header__icon" src="./public/icon_profile.svg" alt="Profile" />
-        </a>
+        <?
+        if (isset($user['id']) || isset($_SESSION['user']['id'])) {
+          echo '<a href="/Prodetali/_next/regist/account.php" class="link_to_profile">
+          <img class="header__icon" src="' . $user['icon'] . '" alt="' . $user['nickname'] . '" />
+        </a>';
+        } else {
+          echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="link_to_profile">
+          <img class="header__icon" src="../../public/icon_profile.svg" alt="Profile" />
+        </a>';
+          // во время разработки href="/_next/regist/log-in.php" в else будет href="/_next/regist/contractorPA.html"
+        }
+        ?>
       </div>
-    </div>
   </header>
   <main>
     <!-- TODO change on selected -->
@@ -73,7 +82,7 @@
             </button>
           </li>
           <li class="main__navigation-item main__navigation-item-exit">
-            <a href="index.html" class="main__navigation-button button-exit">Выйти</a>
+            <a href="../../index.php" class="main__navigation-button button-exit">Выйти</a>
           </li>
         </ul>
       </aside>
@@ -82,9 +91,9 @@
         <div class="profile__wrapper">
           <div class="profile__container">
             <div class="profile__content-left">
-              <img src="./public/default_logo.png" alt="" class="profile__image" />
+              <img src="../../public/default_logo.png" alt="" class="profile__image" />
               <button class="profile__image-upload">
-                <img src="./public/logo_add_clip-button.svg" alt="logo_upload" class="profile__image-upload-clip">
+                <img src="../../public/logo_add_clip-button.svg" alt="logo_upload" class="profile__image-upload-clip">
               </button>
             </div>
             <div class="profile__content-right">
@@ -104,13 +113,13 @@
           <button class="profile__button">Сохранить изменения</button>
         </div>
       </section>
-      <section class="services">
+      <!-- <section class="services">
         <div class="services__wrapper">
           <button class="services__button">Добавить услугу</button>
           <div class="services__grid">
             <div class="services__container">
               <div class="services__content-left">
-                <img src="./public/example2_order.png" alt="image_service" class="services__block-image" />
+                <img src="../../public/example2_order.png" alt="image_service" class="services__block-image" />
               </div>
               <div class="services__content-right">
                 <h3 class="services__title">Лазерная резка металла</h3>
@@ -122,7 +131,7 @@
             </div>
             <div class="services__container">
               <div class="services__content-left">
-                <img src="./public/example_order.png" alt="image_service" class="services__block-image" />
+                <img src="../../public/example_order.png" alt="image_service" class="services__block-image" />
               </div>
               <div class="services__content-right">
                 <h3 class="services__title">Лазерная резка металла</h3>
@@ -134,7 +143,7 @@
             </div>
             <div class="services__container">
               <div class="services__content-left">
-                <img src="./public/example2_order.png" alt="image_service" class="services__block-image" />
+                <img src="../../public/example2_order.png" alt="image_service" class="services__block-image" />
               </div>
               <div class="services__content-right">
                 <h3 class="services__title">Сварка металла</h3>
@@ -145,7 +154,7 @@
             </div>
             <div class="services__container">
               <div class="services__content-left">
-                <img src="./public/example_order.png" alt="image_service" class="services__block-image" />
+                <img src="../../public/example_order.png" alt="image_service" class="services__block-image" />
               </div>
               <div class="services__content-right">
                 <h3 class="services__title">Сварка металла</h3>
@@ -180,13 +189,13 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
     </div>
   </main>
   <footer>
     <div class="footer__wrapper">
       <div class="footer__block">
-        <img src="./public/logo_and_text__footer.svg" alt="" class="footer__logo" />
+        <img src="../../public/logo_and_text__footer.svg" alt="" class="footer__logo" />
       </div>
       <div class="footer__block">
         <h3 class="footer__block-title">Компания</h3>
