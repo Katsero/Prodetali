@@ -196,8 +196,8 @@ if ($nothave[11] === '') {
 $account_icon = $account_icon_regist = $send_profil = "";
 
 if (!isset($user['id'])) {
-    $account_icon = '/images/icon/noauth.jpg';
-    $account_icon_regist = '/images/icon/noauth.jpg';
+    $account_icon = '../../Prodetali/public/icon_profile.svg';
+    $account_icon_regist = '../../Prodetali/public/icon_profile.svg';
     $send_profil = "/regist/log-in.php";
 } else {
     $account_icon = $user['icon'];
@@ -207,39 +207,21 @@ if (!isset($user['id'])) {
 
 /** структура отправки на страницу ошибки без ссылок меню **/
 if ($title_self === "") {
-    $title_self = '/404.php';
+    $title_self = '/index.php';
+} elseif ($title1_self === "") {
+    $title1_self = '/index.php';
+} elseif ($title2_self === "") {
+    $title2_self = '/index.php';
+} elseif ($title3_self === "") {
+    $title3_self = '/index.php';
+} elseif ($title4_self === "") {
+    $title4_self = '/index.php';
+} elseif ($title5_self === "") {
+    $title5_self = '/index.php';
+} elseif ($title6_self === "") {
+    $title6_self = '/index.php';
 } else {
-    $title_self = $title_self;
-}
-if ($title1_self === "") {
-    $title1_self = '/404.php';
-} else {
-    $title1_self = $title1_self;
-}
-if ($title2_self === "") {
-    $title2_self = '/404.php';
-} else {
-    $title2_self = $title2_self;
-}
-if ($title3_self === "") {
-    $title3_self = '/404.php';
-} else {
-    $title3_self = $title3_self;
-}
-if ($title4_self === "") {
-    $title4_self = '/404.php';
-} else {
-    $title4_self = $title4_self;
-}
-if ($title5_self === "") {
-    $title5_self = '/404.php';
-} else {
-    $title5_self = $title5_self;
-}
-if ($title6_self === "") {
-    $title6_self = '/404.php';
-} else {
-    $title6_self = $title6_self;
+    return null;
 }
 
 
@@ -335,16 +317,15 @@ if (
 
 //--------- TEXT IN MENU PROFILS
 
-$title7 = "";
-$title7_self = "";
+// $title7 = $title7_self = "";
 
-if (!isset($user['id'])) {
-    $title7 = 'Авторизоваться';
-    $title7_self = "regist/log-in.php";
-} else {
-    $title7 = "Личный кабинет";
-    $title7_self = "regist/account.php";
-}
+// if (!isset($user['id'])) {
+//     $title7 = 'Войти';
+//     $title7_self = "/Prodetali/_next/regist/log-in.php";
+// } else {
+//     $title7 = "Личный кабинет";
+//     $title7_self = "/Prodetali/_next/regist/contractorPA.php";
+// }
 
 //---------  BROATCHAST IN PROFILE
 
@@ -435,47 +416,47 @@ if ((isset($user['id']) === "1" || isset($user['id']) === "2" && isset($user['em
 
 //----------      ПРОВЕРКИ
 if ($profile_index === "not" || "") {
-    $profile_index = "/../404.php";
+    $profile_index = "/../index.php";
 } else {
     $profile_index = $profile_index;
 }
 if ($profile_update === "not" || "") {
-    $profile_update = "/../404.php";
+    $profile_update = "/../index.php";
 } else {
     $profile_update = $profile_update;
 }
 if ($profile_donate === "not" || "") {
-    $profile_donate = "/../404.php";
+    $profile_donate = "/../index.php";
 } else {
     $profile_donate = $profile_donate;
 }
 if ($profile_rules === "not" || "") {
-    $profile_rules = "/../404.php";
+    $profile_rules = "/../index.php";
 } else {
     $profile_rules = $profile_rules;
 }
 if ($profile_ip === "not" || "") {
-    $profile_ip = "/../404.php";
+    $profile_ip = "/../index.php";
 } else {
     $profile_ip = $profile_ip;
 }
 if ($profile_contract === "not" || "") {
-    $profile_contract = "/../404.php";
+    $profile_contract = "/../index.php";
 } else {
     $profile_contract = $profile_contract;
 }
 if ($profile_fqa === "not" || "") {
-    $profile_fqa = "/../404.php";
+    $profile_fqa = "/../index.php";
 } else {
     $profile_fqa = $profile_fqa;
 }
 if ($profile_admin === "not" || "") {
-    $profile_admin = "/../404.php";
+    $profile_admin = "/../index.php";
 } else {
     $profile_admin = $profile_admin;
 }
 if ($profile_developer === "not" || "") {
-    $profile_developer = "/../404.php";
+    $profile_developer = "/../index.php";
 } else {
     $profile_developer = $profile_developer;
 }
@@ -576,4 +557,9 @@ if ($nothave_profile[9] === '') {
 } elseif ($nothave_profile[9] === 'not') {
     $notification_profil10 = $no;
 }
+
+// Navigation variables
+$title7 = "Личный кабинет";
+$title7_self = "account.php";
+$upmes7 = "";
 ?>

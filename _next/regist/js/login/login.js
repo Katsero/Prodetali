@@ -13,7 +13,7 @@ function checkEmail() {
         return;
     }
 
-    fetch(`login.php?action=check_email&email=${email}`)
+    fetch(`log-in.php?action=check_email&email=${email}`)
         .then(response => response.json())
         .then(data => {
             if (data.exists) {
@@ -39,7 +39,7 @@ function checkPassword() {
         return;
     }
 
-    fetch(`login.php?action=check_password&email=${email}`)
+    fetch(`log-in.php?action=check_password&email=${email}`)
         .then(response => response.json())
         .then(data => {
             if (!data.find) {

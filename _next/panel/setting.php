@@ -9,21 +9,24 @@ if (session_status() == PHP_SESSION_NONE) {
 
 /** НАСТРОЙКА ССЫЛОК МЕНЮ **/
 
-// главная
-$bagus = "/../../index.php";
-//црс
+// none - пустые переменные для будущих ссылок
+
+// none
+$bagus = "#";
+//none
 $fqa = "#";
-//О политехе
-$title_self = "#";
-//пусто
-$title1_self = "#";
-//пусто
-$title2_self = "";
-// мероприятия
-$title3_self = "#";
-//для студентов
-$title4_self = "#";
-//пусто
+//главная
+$title_self = "Prodetali/index.php";
+//Обьявления
+$title1_self = "Prodetali/index.php";
+//Исполнители
+$title2_self = "Prodetali/contranctors.html";
+//Услуги
+$title3_self = "/../../Prodetali/services.html";
+//О нас
+$title4_self = "/../../Prodetali/index.php";
+//Чат
+$title5_self = "/../../Prodetali/index.php";
 $title5_self = "#";
 //пусто
 $title6_self = "#";
@@ -31,13 +34,13 @@ $title6_self = "#";
 /** НАСТРОЙКА НАЗВАНИЙ МЕНЮ **/
 
 //ГЛАВНОЕ МЕНЮ
-$title = "— Объявления";
+$title = "— На главную";
 //ИНФОРМАЦИЯ
-$title1 = "— Исполнители";
+$title1 = "— Объявления";
 //ДОНАТЫ
-$title2 = "Услуги";
+$title2 = "Исполнители";
 //ПРАВИЛА
-$title3 = "О нас";
+$title3 = "Услуги";
 //ПОД РАЗМЫШЛЕНИЕ
 $title4 = "Чат";
 //ЗАГРУЗКИ

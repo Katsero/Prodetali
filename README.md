@@ -1,6 +1,6 @@
 ## Prodetali - PRO детали
 Задачи:
-🛠️ 1. Разбить style.css на два: header + footer и index.html
+🛠️ [расписать].
    
 [![Tim](https://img.shields.io/github/forks/onwidget/astrowind.svg?style=social&label=forks&maxAge=86400&color=ff69b4)](https://t.me/timqwees)
 

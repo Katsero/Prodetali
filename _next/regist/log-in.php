@@ -1,6 +1,6 @@
 <?php
-include_once __DIR__ . '/../php/src/helpers.php';
-include_once __DIR__ . '/../php/element.php';
+require_once __DIR__ . '/../php/src/helpers.php';
+require_once __DIR__ . '/../php/element.php';
 
 $user = currentUser();
 // Запуск сеанса
@@ -14,6 +14,15 @@ $time_start = time();
 if (time() - $time_start > 5) {
   header("Location: log-in.php");
   exit;
+}
+$title7 = $title7_self = "";
+
+if (!isset($user['id'])) {
+  $title7 = 'Войти';
+  $title7_self = "/Prodetali/_next/regist/log-in.php";
+} else {
+  $title7 = "Личный кабинет";
+  $title7_self = "/Prodetali/_next/regist/contractorPA.php";
 }
 ?>
 <!DOCTYPE html>
@@ -79,6 +88,52 @@ if (time() - $time_start > 5) {
       height: 0;
       width: 0;
     }
+
+    .date_reg {
+      background: transparent;
+      border: 1px solid #cc5722;
+      border-radius: 7px;
+      padding: 5px;
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      font-weight: 600;
+      z-index: 1;
+      color: #cc5722;
+      transition: all ease 1s;
+    }
+
+    .bloctime {
+      border-radius: 8px;
+      border: 1px solid #cc5722;
+      padding: 2.5px;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      text-align: center;
+      overflow: hidden;
+      display: flex;
+      position: relative;
+      z-index: 1;
+      transition: all ease 1s;
+    }
+
+    .inform h4 {
+      color: #cc5722;
+      margin-top: 1px !important;
+      margin-bottom: 0px !important;
+      z-index: 1;
+      transition: all ease 1s;
+    }
+
+    .ti b {
+      font-size: 16px;
+      color: #cc5722;
+      position: relative;
+      margin: 0px 3px;
+      top: -15px;
+      transition: all ease 1s;
+    }
   </style>
 </head>
 
@@ -98,7 +153,7 @@ if (time() - $time_start > 5) {
   <nav class="navbar">
     <div class="logo_item">
       <i class="bx bx-menu" id="sidebarOpen"></i>
-      <img src="/../images/logo.png" alt="timqwees" /></i>
+      <img src="./../images/logo.png" alt="PROДетали" /></i>
     </div>
 
     <?php echo $search; ?>
@@ -221,7 +276,7 @@ if (time() - $time_start > 5) {
       <div class="bottom_content">
         <div class="bottom expand_sidebar">
           <span> Удерживать окно</span>
-          <i class='bx bx-log-in'></i>
+          <i class=' bx bx-log-in'></i>
         </div>
         <div class="bottom collapse_sidebar">
           <span> Закрывать</span>
@@ -289,7 +344,7 @@ if (time() - $time_start > 5) {
                         --bord: 1px solid #fff;
                         --whiter-color: #f9f9f9;
                         --white-color: #fff;
-                        --blue-color: #4070f4;
+                        --blue-color: #0f2346;
                         --grey-color: #707070;
                         --grey-color-light: #aaa;
                         --text-color: #a1a1a1;
@@ -303,9 +358,9 @@ if (time() - $time_start > 5) {
                         --input: #252525;
                         --nb: #414145;
                         --inptext: #b5b5b5;
-                        --hhg: #A4C6FF;
+                        --hhg: #0f2346;
                         --mestext: #f9f9f9;
-                        --hh: #7CFFA8;
+                        --hh: #0f2346;
                         --white: #fff;
                         --input_text: #f8f8f8;
                         --greamsw: #56515d91;
@@ -315,7 +370,7 @@ if (time() - $time_start > 5) {
                         --inptext: gray;
                         --input: #fff;
                         --whiter-color: transparent;
-                        --white-color: #333;
+                        --white-color: #0f2346;
                         --blue-color: #fff;
                         --grey-color: #f2f2f2;
                         --content-color: #707070;
@@ -328,8 +383,8 @@ if (time() - $time_start > 5) {
                         --white: #000;
                         --navigator: #333;
                         --nb: gray;
-                        --hh: #405AB4;
-                        --hhg: #405AB4;
+                        --hh: #0f2346;
+                        --hhg: #0f2346;
                         --mestext: #333;
                         --input_text: rgb(73, 80, 87);
                         --greamsw: #FBFBFB;
