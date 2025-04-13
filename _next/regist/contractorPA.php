@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="../../src/css/normalize.css" />
   <link rel="stylesheet" href="../../src/css/style.css" />
   <link rel="stylesheet" href="../../src/css/constractorPA.css" />
+  <link rel="stylesheet" href="../../src/css/constractorPA_tablet.css" />
+  <link rel="stylesheet" href=".//src/css/style_tablet.css" />
   <link href="https://myfonts.ru/myfonts?fonts=bookman-old-style" rel="stylesheet" type="text/css" />
   <script src="../../src/js/contractorAP.js" defer></script>
 </head>
@@ -40,13 +42,13 @@
               <a class="navigation__link" href="">Чат</a>
             </li>
             <li class="navigation__item">
-              <?
+              <?php
               echo '<a class="navigation__link" href="../../index.php">На главную</a>';
               ?>
             </li>
           </ul>
         </nav>
-        <?
+        <?php
         if (isset($user['id']) || isset($_SESSION['user']['id'])) {
           echo '<a href="/Prodetali/_next/regist/account.php" class="link_to_profile">
           <img class="header__icon" src="' . $user['icon'] . '" alt="' . $user['nickname'] . '" />

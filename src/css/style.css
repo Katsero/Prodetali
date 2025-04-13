@@ -1,6 +1,8 @@
 @font-face {
-  font-family: "Bookman";
-  src: url("../fonts/BookmanOldStyle/bookman_old_style_gras.woff2") format("woff2");
+    font-family: "Bookman";
+    src: url("../fonts/Bookman/bookmanoldstyle.ttf")
+      format("truetype");
+    font-weight: 400;
 }
 
 @font-face {
@@ -16,7 +18,7 @@
   margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Bookman Old Style", arial;
+  font-family: 'Lora', sans-serif;
   --text: #0f2346;
   --white-text: #bcc0c3;
   --orange-accent: #cc5722;
@@ -206,6 +208,7 @@ a {
   gap: 2.5rem;
 }
 
+
 .advantages__content-left,
 .advantages__content-right {
   margin: 0;
@@ -218,7 +221,6 @@ a {
   justify-content: start;
   align-items: start;
 }
-
 .advantages__block-title {
   margin: 0;
   color: white;
@@ -248,7 +250,7 @@ a {
 }
 
 .advantages__item-title::before {
-  content: url("../svg/marker_icon.svg");
+  content: url("../../public/marker_icon.svg");
   margin: 0 0.5rem 0 0;
 }
 
@@ -387,12 +389,15 @@ a {
   padding: 0 0 3rem 0;
 }
 
+/*
 details summary::after {
-  content: url("../svg/details_marker.svg");
+  content: url("../../public/details_marker.svg");
   position: relative;
   right: -6rem;
   transform: 3s;
+  max-width: 2rem;
 }
+*/
 
 details[open] summary::after {
   content: url("../svg/marker_datails_rotate.svg");

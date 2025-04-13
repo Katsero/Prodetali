@@ -1,7 +1,7 @@
 @font-face {
     font-family: "Bookman";
-    src: url("../fonts/BookmanOldStyle/bookman_old_style_gras.woff2")
-      format("woff2");
+    src: url("../fonts/Bookman/bookmanoldstyle.ttf")
+      format("truetype");
   }
   @font-face {
     font-family: "RobotoMedium";
@@ -11,14 +11,17 @@
     margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Bookman Old Style", arial;
-    font-display:auto;
+    font-family: 'Lora', sans-serif;
+    font-weight: 400;
     --text: #0f2346;
     --white-text: #bcc0c3;
     --orange-accent: #cc5722;
     --blue-accent: #0f2346;
     --grey-accent: #657996;
   }
+button:hover {
+    cursor: pointer;
+}
 .header__source {
     padding: 1.5rem 2.5rem;
     background-color: var(--blue-accent);
@@ -133,6 +136,7 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    min-width: 60rem;
     max-width: 60rem;
     width: 100%;
     margin: 0 auto;
