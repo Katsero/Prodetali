@@ -1,0 +1,15 @@
+.history {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+    background-color: var(--blue-accent);
+}
+.history__text {
+    color: var(--white-text);
+    font-size: 1.6rem;
+    margin: 1.5rem;
+    a {
+        color: var(--white-text);
+    }
+}
