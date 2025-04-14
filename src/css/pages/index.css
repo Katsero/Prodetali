@@ -198,7 +198,7 @@
 }
 
 .advantages__item-title::before {
-  content: url("../../public/marker_icon.svg");
+  content: url("../../../public/marker_icon.svg");
   margin: 0 0.5rem 0 0;
 }
 
@@ -206,6 +206,7 @@
   color: var(--white-text);
   font-size: 2.4rem;
   font-weight: 400;
+  margin: 0;
 }
 
 .rating {
@@ -331,18 +332,16 @@
   padding: 0 0 3rem 0;
 }
 
-/*
 details summary::after {
-  content: url("../../public/details_marker.svg");
+  content: url("../../../public/details_marker.svg");
   position: relative;
   right: -6rem;
   transform: 3s;
   max-width: 2rem;
 }
-*/
 
 details[open] summary::after {
-  content: url("../svg/marker_datails_rotate.svg");
+  content: url("../../../public/marker_datails_rotate.svg");
 }
 
 .faq__summary {

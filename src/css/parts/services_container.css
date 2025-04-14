@@ -3,7 +3,7 @@
     width: 100%;
     height: fit-content;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 4rem;
+    gap: 5rem;
     padding: 2rem;
     justify-items: start;
 }
@@ -11,8 +11,8 @@
 .container__card {
     display: flex;
     flex-direction: row;
-    width: 40rem;
-    height: 20rem;
+    width: 45rem;
+    height: 23rem;
     border-radius: 4rem;
     overflow: hidden;
     box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
@@ -31,13 +31,13 @@
 
     h3 {
         margin: 0 0 1rem;
-        font-size: 2.0rem;
+        font-size: 2.4rem;
         color: var(--blue-accent);
         font-family: "RobotoMedium";
     }
     p {
         margin: 0;
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         color: var(--text);
         font-family: "Bookman";
     }
