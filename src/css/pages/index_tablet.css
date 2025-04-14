@@ -82,10 +82,4 @@
     .rating__link, .requests__gallery-link {
         font-size: 2rem;
     }
-    .footer__block-title, .footer__link_tel {
-        font-size: 1.4rem;
-    }
-    .footer__block-text, .footer__link_email {
-        font-size: 1.2rem;
-    }
 }

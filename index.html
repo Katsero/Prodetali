@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -8,8 +7,11 @@
   <title>PROДетали</title>
   <link rel="stylesheet" href="./src/css/normalize.css" />
   <link rel="stylesheet" href=".//src/css/style.css" />
-  <link rel="stylesheet" href=".//src/css/style_modal.css" />
-  <link rel="stylesheet" href=".//src/css/style_tablet.css" />
+  <link rel="stylesheet" href=".//src/css/pages/index.css" />
+  <link rel="stylesheet" href=".//src/css/pages/index_tablet.css" />
+  <link rel="stylesheet" href=".//src/css/parts/header.css" />
+  <link rel="stylesheet" href=".//src/css/parts/footer.css" />
+  <link rel="stylesheet" href=".//src/css/parts/modal.css" />
   <link href="https://myfonts.ru/myfonts?fonts=bookman-old-style" rel="stylesheet" type="text/css" />
   <script src="js/modalEntryRegist.js" defer></script>
   <script src="js/LK_entry_href.js" defer></script>
@@ -18,9 +20,9 @@
 <body>
   <header>
     <div class="header__container">
-      <div class="header__content-left">
+      <a class="header__content-left" href="index.html">
         <img class="header__logo" src="public/logo_and_text.svg" alt="Main logo here" />
-      </div>
+      </a>
       <div class="header__content-right">
         <nav class="header__navigation navigation">
           <ul class="navigation__list">
@@ -40,7 +42,8 @@
               <a class="navigation__link" href="">Чат</a>
             </li>
             <li class="navigation__item">
-              
+              <a class="navigation__link navigation__authenticate"
+                href="./_next/regist/sign-up.php">Войти/Регистрация</a>
             </li>
           </ul>
         </nav>
@@ -57,7 +60,7 @@
         Платформа, где заказчики находят исполнителей, а исполнители – новые
         возможности!
       </p>
-      <a class="hero__link" href="registration.html">Присоединяйтесь сейчас</a>
+      <a class="hero__link button--orange" href="registration.html">Присоединяйтесь сейчас</a>
       <img class="hero__backgroung-img" alt="background" src="./public/hero_background.png" />
     </section>
 
@@ -231,7 +234,7 @@
           </div>
         </div>
       </div>
-      <a href="" class="rating__link">Смотреть всех исполнителей</a>
+      <a href="" class="rating__link button--orange">Смотреть всех исполнителей</a>
     </section>
 
     <section class="requests">
@@ -241,7 +244,7 @@
         <div class="requests__container">
           <div class="requests__content-left">
             <img src="./public/actual_img_profile.png" alt="" class="requests__image" /><a href=""
-              class="requests__order-link">Подробнее</a>
+              class="requests__order-link button--blue">Подробнее</a>
           </div>
           <div class="requests__content-right">
             <p class="requests__customer">Василий Л.</p>
@@ -258,7 +261,7 @@
         <div class="requests__container">
           <div class="requests__content-left">
             <img src="./public/actual_img_profile.png" alt="" class="requests__image" /><a href=""
-              class="requests__order-link">Подробнее</a>
+              class="requests__order-link button--blue">Подробнее</a>
           </div>
           <div class="requests__content-right">
             <p class="requests__customer">Василий Л.</p>
@@ -275,7 +278,7 @@
         <div class="requests__container">
           <div class="requests__content-left">
             <img src="./public/actual_img_profile.png" alt="" class="requests__image" /><a href=""
-              class="requests__order-link">Подробнее</a>
+              class="requests__order-link button--blue">Подробнее</a>
           </div>
           <div class="requests__content-right">
             <p class="requests__customer">Василий Л.</p>
@@ -292,7 +295,7 @@
         <div class="requests__container">
           <div class="requests__content-left">
             <img src="./public/actual_img_profile.png" alt="" class="requests__image" /><a href=""
-              class="requests__order-link">Подробнее</a>
+              class="requests__order-link button--blue">Подробнее</a>
           </div>
           <div class="requests__content-right">
             <p class="requests__customer">Василий Л.</p>
@@ -307,7 +310,7 @@
           </div>
         </div>
       </div>
-      <a href="" class="requests__gallery-link">Смотреть все объявления</a>
+      <a href="" class="requests__gallery-link button--orange">Смотреть все объявления</a>
     </section>
 
     <section class="faq">
