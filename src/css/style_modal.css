@@ -1,7 +1,7 @@
 @font-face {
     font-family: "Bookman";
-    src: url("../fonts/Bookman/bookmanoldstyle.ttf")
-      format("truetype");
+    src: url("../fonts/BookmanOldStyle/bookman_old_style_gras.woff2")
+      format("woff2");
 }
 @font-face {
     font-family: "RobotoMedium";
@@ -14,8 +14,7 @@
     margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Lora', sans-serif;
-    font-weight: 400;
+    font-family: "Bookman Old Style", arial;
     --text: #0f2346;
     --white-text: #bcc0c3;
     --orange-accent: #cc5722;

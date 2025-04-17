@@ -10,9 +10,8 @@ $user = currentUser();
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PROДетали</title>
   <link rel="stylesheet" href="./src/css/normalize.css" />
-  <link rel="stylesheet" href=".//src/css/style.css" />
-  <link rel="stylesheet" href=".//src/css/style_modal.css" />
-  <link rel="stylesheet" href=".//src/css/style_tablet.css" />
+  <link rel="stylesheet" href="./src/css/style.css" />
+  <link rel="stylesheet" href="./src/css/style_modal.css" />
   <link href="https://myfonts.ru/myfonts?fonts=bookman-old-style" rel="stylesheet" type="text/css" />
   <script src="js/modalEntryRegist.js" defer></script>
   <script src="js/LK_entry_href.js" defer></script>
@@ -43,23 +42,23 @@ $user = currentUser();
               <a class="navigation__link" href="">Чат</a>
             </li>
             <li class="navigation__item">
-              <?php
+              <?
               if (isset($user['id'])) {
-                echo '<a class="navigation__link" href="/Prodetali/_next/regist/account.php">Личный кабинет</a>';
+                echo '<a class="navigation__link" href="/_next/regist/account.php">Личный кабинет</a>';
               } else {
-                echo '<a class="navigation__link" href="/Prodetali/_next/regist/log-in.php">Войти</a>';
+                echo '<a class="navigation__link" href="/_next/regist/log-in.php">Войти</a>';
               }
               ?>
             </li>
           </ul>
         </nav>
-        <?php
+        <?
         if (isset($user['id'])) {
-          echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="link_to_profile">
+          echo '<a href="/_next/regist/contractorPA.php" class="link_to_profile">
           <img class="header__icon" src="' . $user['icon'] . '" alt="' . $user['nickname'] . '" />
         </a>';
         } else {
-          echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="link_to_profile">
+          echo '<a href="/_next/regist/contractorPA.php" class="link_to_profile">
           <img class="header__icon" src="./public/icon_profile.svg" alt="Profile" />
         </a>';
           // во время разработки href="/_next/regist/log-in.php" в else будет href="/_next/regist/contractorPA.html"

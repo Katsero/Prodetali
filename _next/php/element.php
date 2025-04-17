@@ -196,8 +196,8 @@ if ($nothave[11] === '') {
 $account_icon = $account_icon_regist = $send_profil = "";
 
 if (!isset($user['id'])) {
-    $account_icon = '../../Prodetali/public/icon_profile.svg';
-    $account_icon_regist = '../../Prodetali/public/icon_profile.svg';
+    $account_icon = '../../public/icon_profile.svg';
+    $account_icon_regist = '../../public/icon_profile.svg';
     $send_profil = "/regist/log-in.php";
 } else {
     $account_icon = $user['icon'];

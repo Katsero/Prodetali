@@ -1854,6 +1854,36 @@ progress {
   }
 }
 
+@media (max-width: 992px) {
+  .row-barier {
+    width: 800px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .row-barier {
+    width: 950px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .row-barier {
+    width: 950px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .row-barier {
+    width: 1100px;
+  }
+}
+
+@media (min-width: 1800px) {
+  .row-barier {
+    width: 1200px;
+  }
+}
+
 @keyframes block768 {
   0% {
     width: 65.333333%;
