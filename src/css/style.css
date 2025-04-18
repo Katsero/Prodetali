@@ -26,7 +26,7 @@
   --grey-accent: #657996;
 }
 
-a {
+a:hover {
   cursor: pointer;
 }
 
@@ -47,30 +47,32 @@ a {
   text-decoration: none;
 }
 
-.button--orange {
-  color: white;
-  background-color: var(--orange-accent);
-  border: 0.2rem solid var(--orange-accent);
+.button--orange, .button--blue {
   border-radius: 6rem;
   cursor: pointer;
   font-family: 'Bookman';
 }
 
+.button--orange {
+  color: white;
+  background-color: var(--orange-accent);
+  border: 0.2rem solid var(--orange-accent);
+}
+
 .button--orange:hover {
   color: var(--orange-accent);
   background-color: transparent;
+  text-decoration: none;
 }
 
 .button--blue {
   color: white;
   background-color: var(--grey-accent);
   border: 0.2rem solid var(--grey-accent);
-  border-radius: 6rem;
-  cursor: pointer;
-  font-family: 'Bookman';
 }
 
 .button--blue:hover {
   color: var(--grey-accent);
   background-color: transparent;
+  text-decoration: none;
 }

@@ -9,7 +9,14 @@
     color: var(--white-text);
     font-size: 1.6rem;
     margin: 1.5rem;
+    font-family: 'RobotoMedium';
     a {
         color: var(--white-text);
+        font-family: 'RobotoMedium';
+    }
+}
+.history__links {
+    a:hover {
+        text-decoration: underline;
     }
 }
