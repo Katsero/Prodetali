@@ -302,6 +302,7 @@
 .requests__order-link {
   margin: 0;
   padding: 1rem 3.3rem;
+  width: fit-content;
   font-size: 1.6rem;
 }
 
