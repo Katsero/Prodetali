@@ -1,0 +1,73 @@
+h1 {
+  margin: 0;
+}
+
+.hero {
+  margin-top: 3rem;
+  color: var(--blue-accent);
+}
+
+.hero__wrapper {
+  padding: 0 2rem 0 6rem;
+}
+
+.hero__title {
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.hero__description {
+  margin-top: 2rem;
+  font-size: 2rem;
+}
+
+.advantages {
+  margin-top: 4rem;
+  color: var(--white-text); /* "белый текст" по цвету серый, ну окей (?)*/
+  background-color: var(--blue-accent);
+}
+
+.advantages__wrapper {
+  padding: 3rem 5rem 5rem 6rem;
+}
+
+.advantages__title {
+  font-size: 2.7rem;
+}
+
+.advantages__list {
+  margin-top: 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.advantages__item {
+  margin: 0;
+  display: flex;
+  gap: 4rem;
+}
+
+.advantages__item::before {
+  content: url(../../../public/marker_icon.svg);
+}
+
+.advantages__text {
+  font-size: 1.8rem;
+}
+
+.slogan {
+  margin-top: 5.75rem;
+}
+
+.slogan__description {
+  font-size: 2.4rem;
+  text-align: center;
+  color: var(--blue-accent);
+  font-weight: 700;
+}
+
+footer {
+  margin-top: 5.85rem;
+}
