@@ -1,7 +1,6 @@
 profileButton = document.querySelector(".button-profile");
 servicesButton = document.querySelector(".button-services");
 requestsButton = document.querySelector(".button-requests");
-console.log("!");
 
 profileSection = document.querySelector(".profile");
 servicesSection = document.querySelector(".services");
