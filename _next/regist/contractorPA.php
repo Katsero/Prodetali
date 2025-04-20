@@ -10,36 +10,39 @@
   <title>PROДетали</title>
   <link rel="stylesheet" href="../../src/css/normalize.css" />
   <link rel="stylesheet" href="../../src/css/style.css" />
-  <link rel="stylesheet" href="../../src/css/constractorPA.css" />
-  <link rel="stylesheet" href="../../src/css/constractorPA_tablet.css" />
-  <link rel="stylesheet" href=".//src/css/style_tablet.css" />
+  <link rel="stylesheet" href="../../src/css/parts/header.css" />
+  <link rel="stylesheet" href="../../src/css/parts/footer.css" />
+  <link rel="stylesheet" href="../../src/css/parts/history.css" />
+  <link rel="stylesheet" href="../../src/css/pages/constractorPA.css" />
+  <link rel="stylesheet" href="../../src/css/pages/constractorPA_tablet.css" />
+  <link rel="stylesheet" href="../../src/css/parts/services_container.css" />
   <link href="https://myfonts.ru/myfonts?fonts=bookman-old-style" rel="stylesheet" type="text/css" />
-  <script src="../../src/js/contractorAP.js" defer></script>
+  <script src="../../js/contractorAP.js" defer></script>
 </head>
 
 <body>
   <header>
     <div class="header__container">
-      <div class="header__content-left">
+      <a class="header__content-left" href="../../index.php">
         <img class="header__logo" src="../../public/logo_and_text.svg" alt="Main logo here" />
-      </div>
+      </a>
       <div class="header__content-right">
         <nav class="header__navigation navigation">
           <ul class="navigation__list">
             <li class="navigation__item">
-              <a class="navigation__link" href="">Объявления</a>
+              <a class="navigation__link" href="../../ads.php">Объявления</a>
             </li>
             <li class="navigation__item">
-              <a class="navigation__link" href="../../contranctors.html">Исполнители</a>
+              <a class="navigation__link" href="../../contractors.php">Исполнители</a>
             </li>
             <li class="navigation__item">
-              <a class="navigation__link" href="../../services.html">Услуги</a>
+              <a class="navigation__link" href="../../services.php">Услуги</a>
             </li>
             <li class="navigation__item">
-              <a class="navigation__link" href="">О нас</a>
+              <a class="navigation__link" href="../../aboutUs.php">О нас</a>
             </li>
             <li class="navigation__item">
-              <a class="navigation__link" href="">Чат</a>
+              <a class="navigation__link" href="../../chat.php">Чат</a>
             </li>
             <li class="navigation__item">
               <?php
@@ -57,14 +60,17 @@
           echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="link_to_profile">
           <img class="header__icon" src="../../public/icon_profile.svg" alt="Profile" />
         </a>';
-          // во время разработки href="/_next/regist/log-in.php" в else будет href="/_next/regist/contractorPA.html"
+          // во время разработки href="/_next/regist/log-in.php" в else будет href="/_next/regist/contractorPA.php"
         }
         ?>
       </div>
   </header>
   <main>
     <!-- TODO change on selected -->
-    <p class="header__source">Главная >> Личный кабинет >> Профиль</p>
+    <section class="history">
+      <p class="history__text history__links"><a href="../../index.php">Главная</a>  >> Личный кабинет >> Профиль</p>
+      <p class="history__text history__location">Местоположение: Москва</p>
+    </section>
     <div class="main__wrapper">
       <aside class="main__navigation">
         <ul class="main__navigation-list">
@@ -112,57 +118,56 @@
               </form>
             </div>
           </div>
-          <button class="profile__button">Сохранить изменения</button>
+          <button class="profile__button button--orange">Сохранить изменения</button>
         </div>
       </section>
-      <!-- <section class="services">
-        <div class="services__wrapper">
-          <button class="services__button">Добавить услугу</button>
-          <div class="services__grid">
-            <div class="services__container">
-              <div class="services__content-left">
-                <img src="../../public/example2_order.png" alt="image_service" class="services__block-image" />
-              </div>
-              <div class="services__content-right">
-                <h3 class="services__title">Лазерная резка металла</h3>
-                <p class="services__description">
-                  В нашем парке оборудования 3 станка лазерной резки листового
-                  металла и станок лазерной резки труб
+      <section class="services">
+      <div class="services__wrapper">
+          <button class="services__button button--orange">Добавить услугу</button>
+          <div class="services__container container">
+            <div class="container__card">
+              <img src="../../public/laser.png" alt="Лазерная резка">
+              <div class="container__content">
+                <h3>Лазерная резка металла</h3>
+                <p>В нашем парке оборудования 3 станка лазерной резки листового металла и станок лазерной резки труб
                 </p>
               </div>
             </div>
-            <div class="services__container">
-              <div class="services__content-left">
-                <img src="../../public/example_order.png" alt="image_service" class="services__block-image" />
+            <div class="container__card">
+              <img src="../../public/welding.png" alt="Сварка металла">
+              <div class="container__content">
+                <h3>Сварка металла</h3>
+                <p>Ручная электродуговая, полуавтоматом и сварка аргоном</p>
               </div>
-              <div class="services__content-right">
-                <h3 class="services__title">Лазерная резка металла</h3>
-                <p class="services__description">
-                  В нашем парке оборудования 3 станка лазерной резки листового
-                  металла и станок лазерной резки труб
+            </div>
+            <div class="container__card">
+              <img src="../../public/laser.png" alt="Лазерная резка">
+              <div class="container__content">
+                <h3>Лазерная резка металла</h3>
+                <p>В нашем парке оборудования 3 станка лазерной резки листового металла и станок лазерной резки труб
                 </p>
               </div>
             </div>
-            <div class="services__container">
-              <div class="services__content-left">
-                <img src="../../public/example2_order.png" alt="image_service" class="services__block-image" />
+            <div class="container__card">
+              <img src="../../public/welding.png" alt="Сварка металла">
+              <div class="container__content">
+                <h3>Сварка металла</h3>
+                <p>Ручная электродуговая, полуавтоматом и сварка аргоном</p>
               </div>
-              <div class="services__content-right">
-                <h3 class="services__title">Сварка металла</h3>
-                <p class="services__description">
-                  Ручная электродуговая, полуавтоматом и сварка аргоном
+            </div>
+            <div class="container__card">
+              <img src="../../public/laser.png" alt="Лазерная резка">
+              <div class="container__content">
+                <h3>Лазерная резка металла</h3>
+                <p>В нашем парке оборудования 3 станка лазерной резки листового металла и станок лазерной резки труб
                 </p>
               </div>
             </div>
-            <div class="services__container">
-              <div class="services__content-left">
-                <img src="../../public/example_order.png" alt="image_service" class="services__block-image" />
-              </div>
-              <div class="services__content-right">
-                <h3 class="services__title">Сварка металла</h3>
-                <p class="services__description">
-                  Ручная электродуговая, полуавтоматом и сварка аргоном
-                </p>
+            <div class="container__card">
+              <img src="../../public/welding.png" alt="Сварка металла">
+              <div class="container__content">
+                <h3>Сварка металла</h3>
+                <p>Ручная электродуговая, полуавтоматом и сварка аргоном</p>
               </div>
             </div>
           </div>
@@ -191,7 +196,7 @@
             </div>
           </div>
         </div>
-      </section> -->
+      </section> 
     </div>
   </main>
   <footer>
