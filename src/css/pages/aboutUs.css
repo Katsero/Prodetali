@@ -68,6 +68,7 @@ h1 {
 
 .slogan {
   margin-top: 5.75rem;
+  padding: 0 3rem 0;
 }
 
 .slogan__description {
@@ -79,4 +80,51 @@ h1 {
 
 footer {
   margin-top: 5.85rem;
+}
+
+@media (max-width: 960px) {
+  .advantages {
+    background: var(--blue-accent);
+  }
+
+  .advantages__wrapper {
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    margin-top: 2rem;
+  }
+  .hero__title {
+    font-size: 3rem;
+  }
+
+  .hero__description {
+    margin-top: 1rem;
+    font-size: 1.6rem;
+  }
+
+  .advantages {
+    margin-top: 2rem;
+  }
+
+  .advantages__wrapper {
+    padding: 1.5rem 2rem;
+  }
+  .advantages__title {
+    font-size: 2rem;
+  }
+
+  .advantages__text {
+    font-size: 1.35rem;
+  }
+
+  .slogan {
+    margin-top: 2rem;
+  }
+
+  footer {
+    margin-top: 2rem;
+  }
 }
