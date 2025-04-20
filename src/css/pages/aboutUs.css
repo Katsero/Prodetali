@@ -24,11 +24,20 @@ h1 {
 .advantages {
   margin-top: 4rem;
   color: var(--white-text); /* "белый текст" по цвету серый, ну окей (?)*/
-  background-color: var(--blue-accent);
+  background: linear-gradient(
+      90deg,
+      var(--blue-accent) 0%,
+      var(--blue-accent) 50%,
+      #0f2346a0 100%
+    ),
+    right url(../../../public/carving.png);
+  background-repeat: no-repeat;
 }
 
 .advantages__wrapper {
   padding: 3rem 5rem 5rem 6rem;
+  margin: 0;
+  max-width: 50%;
 }
 
 .advantages__title {
