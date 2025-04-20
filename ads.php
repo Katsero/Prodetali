@@ -11,7 +11,7 @@
   <link rel="stylesheet" href=".//src/css/parts/footer.css" />
   <link rel="stylesheet" href=".//src/css/parts/history.css" />
   <link rel="stylesheet" href=".//src/css/parts/filters.css" />
-  <link rel="stylesheet" href=".//src/css/pages/ads.css" />
+  <link rel="stylesheet" href="./src/css/pages/ads.css" />
   <link href="https://myfonts.ru/myfonts?fonts=bookman-old-style" rel="stylesheet" type="text/css" />
   <script src="js/contractorAP.js" defer></script>
 </head>

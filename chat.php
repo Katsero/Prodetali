@@ -13,6 +13,7 @@
   <link rel="stylesheet" href=".//src/css/pages/constractorPA.css" />
   <link rel="stylesheet" href=".//src/css/pages/constractorPA_tablet.css" />
   <link rel="stylesheet" href=".//src/css/parts/services_container.css" />
+  <link rel="stylesheet" href="./src/css/pages/chat.css" />
   <link href="https://myfonts.ru/myfonts?fonts=bookman-old-style" rel="stylesheet" type="text/css" />
   <script src="js/contractorAP.js" defer></script>
 </head>
@@ -54,11 +55,57 @@
         </a>';
           // во время разработки href="/_next/regist/log-in.php" в else будет href="/_next/regist/contractorPA.php"
         }
-        ?>
+        ?> 
       </div>
     </div>
   </header>
+  <section class="history">
+      <p class="history__text history__links"><a href="index.php">Главная</a> >> Чат</p>
+      <p class="history__text history__location">Местоположение: Москва</p>
+  </section>
   <main>
+    <div class="chats__wrapper">
+        <input class="search" value="" type="text" placeholder="Поиск">
+        <div class="chats__container">
+            <a class="message__wrapper" href="">
+                <img src="./public/chat_default_logo.png" alt="logo" class="message__logo">
+                <div class="message">
+                    <p class="message__title">ООО "Металлюга"</p>
+                    <p class="message__desc">Сообщение</p>
+                </div>
+                <p class="message__time">8ч</p>
+            </a>
+            <a class="message__wrapper">
+                <img src="./public/chat_default_logo.png" alt="logo" class="message__logo">
+                <div class="message">
+                    <p class="message__title">ООО "ТитанМет"</p>
+                    <p class="message__desc">Сообщение</p>
+                </div>
+                <p class="message__time">1д</p>
+            </a>
+            <a class="message__wrapper">
+                <img src="./public/chat_default_logo.png" alt="logo" class="message__logo">
+                <div class="message">
+                    <p class="message__title">ООО "ПрокатСервис"</p>
+                    <p class="message__desc">Сообщение</p>
+                </div>
+                <p class="message__time">1д</p>
+            </a>
+            <a class="message__wrapper">
+                <img src="./public/chat_default_logo.png" alt="logo" class="message__logo">
+                <div class="message">
+                    <p class="message__title">ООО "ПерфектСталь"</p>
+                    <p class="message__desc">Сообщение</p>
+                </div>
+                <p class="message__time">1д</p>
+            </a>
+        </div>
+    </div>
+    <div class="messages__filter">
+        <button type="button" class="messages__all messeges__current_filter">Все</button>
+        <button type="button" class="messages__unread messeges__current_filter">Непрочитанные</button>
+        <button type="button" class="messages__archive messeges__current_filter">Архив</button>
+    </div>
   </main>
   <footer>
     <div class="footer__wrapper">
