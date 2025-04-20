@@ -10,44 +10,46 @@ $user = currentUser();
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PROДетали</title>
   <link rel="stylesheet" href="./src/css/normalize.css" />
-  <link rel="stylesheet" href=".//src/css/style.css" />
-  <link rel="stylesheet" href=".//src/css/style_modal.css" />
-  <link rel="stylesheet" href=".//src/css/style_tablet.css" />
+  <link rel="stylesheet" href="./src/css/style.css" />
+  <link rel="stylesheet" href="./src/css/pages/index.css" />
+  <link rel="stylesheet" href="./src/css/pages/index_tablet.css" />
+  <link rel="stylesheet" href="./src/css/parts/header.css" />
+  <link rel="stylesheet" href="./src/css/parts/footer.css" />
+  <link rel="stylesheet" href="./src/css/parts/modal.css" />
   <link href="https://myfonts.ru/myfonts?fonts=bookman-old-style" rel="stylesheet" type="text/css" />
   <script src="js/modalEntryRegist.js" defer></script>
-  <script src="js/LK_entry_href.js" defer></script>
 </head>
 
 <body>
   <header>
     <div class="header__container">
-      <div class="header__content-left">
+      <a class="header__content-left" href="index.php">
         <img class="header__logo" src="public/logo_and_text.svg" alt="Main logo here" />
-      </div>
+      </a>
       <div class="header__content-right">
         <nav class="header__navigation navigation">
           <ul class="navigation__list">
             <li class="navigation__item">
-              <a class="navigation__link" href="">Объявления</a>
+              <a class="navigation__link" href="ads.php">Объявления</a>
             </li>
             <li class="navigation__item">
-              <a class="navigation__link" href="contranctors.html">Исполнители</a>
+              <a class="navigation__link" href="contractors.php">Исполнители</a>
             </li>
             <li class="navigation__item">
-              <a class="navigation__link" href="services.html">Услуги</a>
+              <a class="navigation__link" href="services.php">Услуги</a>
             </li>
             <li class="navigation__item">
-              <a class="navigation__link" href="">О нас</a>
+              <a class="navigation__link" href="aboutUs.php">О нас</a>
             </li>
             <li class="navigation__item">
-              <a class="navigation__link" href="">Чат</a>
+              <a class="navigation__link" href="chat.php">Чат</a>
             </li>
             <li class="navigation__item">
               <?php
               if (isset($user['id'])) {
-                echo '<a class="navigation__link" href="/Prodetali/_next/regist/account.php">Личный кабинет</a>';
+                echo '<a class="navigation__link navigation__authenticate" href="/Prodetali/_next/regist/account.php">Личный кабинет</a>';
               } else {
-                echo '<a class="navigation__link" href="/Prodetali/_next/regist/log-in.php">Войти</a>';
+                echo '<a class="navigation__link navigation__authenticate" href="/Prodetali/_next/regist/log-in.php">Войти</a>';
               }
               ?>
             </li>
@@ -62,7 +64,7 @@ $user = currentUser();
           echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="link_to_profile">
           <img class="header__icon" src="./public/icon_profile.svg" alt="Profile" />
         </a>';
-          // во время разработки href="/_next/regist/log-in.php" в else будет href="/_next/regist/contractorPA.html"
+          // во время разработки href="/_next/regist/log-in.php" в else будет href="/_next/regist/contractorPA.php"
         }
         ?>
       </div>
@@ -75,7 +77,18 @@ $user = currentUser();
         Платформа, где заказчики находят исполнителей, а исполнители – новые
         возможности!
       </p>
-      <a class="hero__link" href="registration.html">Присоединяйтесь сейчас</a>
+      <?php
+        if (isset($user['id'])) {
+          echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="hero__link button--orange">
+          Присоединяйтесь сейчас
+        </a>';
+        } else {
+          echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="hero__link button--orange">
+          Присоединяйтесь сейчас
+        </a>';
+          // во время разработки href="/_next/regist/log-in.php" в else будет href="/_next/regist/contractorPA.php"
+        }
+        ?>
       <img class="hero__backgroung-img" alt="background" src="./public/hero_background.png" />
     </section>
 
@@ -249,7 +262,7 @@ $user = currentUser();
           </div>
         </div>
       </div>
-      <a href="" class="rating__link">Смотреть всех исполнителей</a>
+      <a href="" class="rating__link button--orange">Смотреть всех исполнителей</a>
     </section>
 
     <section class="requests">
@@ -259,7 +272,7 @@ $user = currentUser();
         <div class="requests__container">
           <div class="requests__content-left">
             <img src="./public/actual_img_profile.png" alt="" class="requests__image" /><a href=""
-              class="requests__order-link">Подробнее</a>
+              class="requests__order-link button--blue">Подробнее</a>
           </div>
           <div class="requests__content-right">
             <p class="requests__customer">Василий Л.</p>
@@ -276,7 +289,7 @@ $user = currentUser();
         <div class="requests__container">
           <div class="requests__content-left">
             <img src="./public/actual_img_profile.png" alt="" class="requests__image" /><a href=""
-              class="requests__order-link">Подробнее</a>
+              class="requests__order-link button--blue">Подробнее</a>
           </div>
           <div class="requests__content-right">
             <p class="requests__customer">Василий Л.</p>
@@ -293,7 +306,7 @@ $user = currentUser();
         <div class="requests__container">
           <div class="requests__content-left">
             <img src="./public/actual_img_profile.png" alt="" class="requests__image" /><a href=""
-              class="requests__order-link">Подробнее</a>
+              class="requests__order-link button--blue">Подробнее</a>
           </div>
           <div class="requests__content-right">
             <p class="requests__customer">Василий Л.</p>
@@ -310,7 +323,7 @@ $user = currentUser();
         <div class="requests__container">
           <div class="requests__content-left">
             <img src="./public/actual_img_profile.png" alt="" class="requests__image" /><a href=""
-              class="requests__order-link">Подробнее</a>
+              class="requests__order-link button--blue">Подробнее</a>
           </div>
           <div class="requests__content-right">
             <p class="requests__customer">Василий Л.</p>
@@ -325,7 +338,7 @@ $user = currentUser();
           </div>
         </div>
       </div>
-      <a href="" class="requests__gallery-link">Смотреть все объявления</a>
+      <a href="" class="requests__gallery-link button--orange">Смотреть все объявления</a>
     </section>
 
     <section class="faq">
@@ -450,7 +463,7 @@ $user = currentUser();
     </p>
   </footer>
 
-  <dialog class="authorization">
+  <!-- <dialog class="authorization">
     <h2>Вход</h2>
     <form class="authorization__form" method="dialog">
       <input placeholder="E-mail" class="authorization__form-input" type="email" name="email" required>
@@ -512,7 +525,7 @@ $user = currentUser();
         <button class="code__confirm">Подтвердить</button>
       </div>
     </form>
-  </dialog>
+  </dialog> -->
 </body>
 
 </html>

@@ -60,7 +60,7 @@ button:hover {
     font-weight: 600;
     cursor: pointer;
     outline: none;
-    text-align: left;
+    text-align: center;
     width: 100%;
 }
 .main__navigation-button:hover {
