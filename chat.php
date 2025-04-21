@@ -10,9 +10,6 @@
   <link rel="stylesheet" href=".//src/css/parts/header.css" />
   <link rel="stylesheet" href=".//src/css/parts/footer.css" />
   <link rel="stylesheet" href=".//src/css/parts/history.css" />
-  <link rel="stylesheet" href=".//src/css/pages/constractorPA.css" />
-  <link rel="stylesheet" href=".//src/css/pages/constractorPA_tablet.css" />
-  <link rel="stylesheet" href=".//src/css/parts/services_container.css" />
   <link rel="stylesheet" href="./src/css/pages/chat.css" />
   <link href="https://myfonts.ru/myfonts?fonts=bookman-old-style" rel="stylesheet" type="text/css" />
   <script src="js/contractorAP.js" defer></script>
@@ -25,7 +22,7 @@
         <img class="header__logo" src="public/logo_and_text.svg" alt="Main logo here" />
       </a>
       <div class="header__content-right">
-        <nav class="header__navigation navigation">
+      <nav class="header__navigation navigation">
           <ul class="navigation__list">
             <li class="navigation__item">
               <a class="navigation__link" href="ads.php">Объявления</a>
@@ -41,6 +38,10 @@
             </li>
             <li class="navigation__item">
               <a class="navigation__link" href="chat.php">Чат</a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link navigation__authenticate"
+                href="./_next/regist/sign-up.php">Войти/Регистрация</a>
             </li>
           </ul>
         </nav>
