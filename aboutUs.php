@@ -29,29 +29,30 @@
           />
         </a>
         <div class="header__content-right">
-        <nav class="header__navigation navigation">
-          <ul class="navigation__list">
-            <li class="navigation__item">
-              <a class="navigation__link" href="ads.php">Объявления</a>
-            </li>
-            <li class="navigation__item">
-              <a class="navigation__link" href="contractors.php">Исполнители</a>
-            </li>
-            <li class="navigation__item">
-              <a class="navigation__link" href="services.php">Услуги</a>
-            </li>
-            <li class="navigation__item">
-              <a class="navigation__link" href="aboutUs.php">О нас</a>
-            </li>
-            <li class="navigation__item">
-              <a class="navigation__link" href="chat.php">Чат</a>
-            </li>
-            <li class="navigation__item">
-              <a class="navigation__link navigation__authenticate"
-                href="./_next/regist/sign-up.php">Войти/Регистрация</a>
-            </li>
-          </ul>
-        </nav>
+          <nav class="header__navigation navigation">
+            <ul class="navigation__list">
+              <li class="navigation__item">
+                <a class="navigation__link" href="ads.php">Объявления</a>
+              </li>
+              <li class="navigation__item">
+                <a class="navigation__link" href="contractors.php"
+                  >Исполнители</a
+                >
+              </li>
+              <li class="navigation__item">
+                <a class="navigation__link" href="services.php">Услуги</a>
+              </li>
+              <li class="navigation__item">
+                <a class="navigation__link" href="aboutUs.php">О нас</a>
+              </li>
+              <li class="navigation__item">
+                <a class="navigation__link" href="chat.php">Чат</a>
+              </li>
+              <li class="navigation__item">
+                <a class="navigation__link" href="log-in.php">Войти</a>
+              </li>
+            </ul>
+          </nav>
           <?php
         if (isset($user['id'])) {
           echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="link_to_profile">

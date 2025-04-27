@@ -8,10 +8,6 @@
     src: url("../fonts/Roboto/Roboto-Light.ttf") format("truetype");
   }
 * {
-    margin: 0 auto;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Lora', sans-serif;
     font-weight: 400;
     --text: #0f2346;
     --white-text: #bcc0c3;

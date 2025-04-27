@@ -1,3 +1,24 @@
+@font-face {
+    font-family: "Bookman";
+    src: url("../fonts/Bookman/bookmanoldstyle.ttf")
+      format("truetype");
+  }
+  @font-face {
+    font-family: "RobotoMedium";
+    src: url("../fonts/Roboto/Roboto-Light.ttf") format("truetype");
+  }
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 400;
+    --text: #0f2346;
+    --white-text: #bcc0c3;
+    --orange-accent: #cc5722;
+    --blue-accent: #0f2346;
+    --grey-accent: #657996;
+  }
 main {
     display: flex;
     flex-direction: row;

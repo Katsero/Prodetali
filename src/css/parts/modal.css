@@ -24,10 +24,11 @@
     --grey-background-modal: #E9E9E9;
     --blue-accent-link: #0078CE;
 }
-.authorization, .registration, .code {
+button:hover, input[type="radio"]:hover, input[type="checkbox"]:hover {
+    cursor: pointer;
+}
+main {
     padding: 5rem 7rem;
-    background-color: var(--grey-background-modal);
-    border: 0.1rem solid var(--text);
     border-radius: 7.7rem;
     margin: auto;
     max-width: 85rem;
@@ -35,7 +36,7 @@
     flex-direction: column;
     gap: 0;
 }
-.authorization h2, .registration h2, .code h2{
+h2 {
     font-family: "RobotoMedium";
     color: var(--text);
     font-size: 4.5rem;
@@ -54,6 +55,7 @@
     flex-direction: column;
     gap: 1.3rem;
     max-width: 60rem;
+    width: 100%;
 }
 .registration__form input, .authorization__form input {
     padding: 1.3rem 4rem;
@@ -98,7 +100,7 @@
     color: var(--blue-accent-link);
 }
 .registration__registrate, .authorization__authorizate {
-    margin: 0 auto;
+    margin: 2rem auto 0 auto;
     max-width: 33rem;
     min-width: 25rem;
     background-color: var(--text);
@@ -120,7 +122,10 @@
     background-color: inherit;
 }
 .authorization__buttons {
-    margin: 3rem 0 0 0;
+    min-width: 30rem;
+    width: 100%;
+    max-width: 60rem;
+    margin: 3rem auto 0 auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -128,9 +133,12 @@
     font-size: 2.4rem;
     font-family: "RobotoMedium";
 }
-.authorization__buttons button {
+.authorization__buttons a {
     border: 0;
     background-color: inherit;
+    color: var(--blue-accent);
+    margin: 0;
+    margin-top: 3rem;
 }
 .code__desc {
     color: #657996;
