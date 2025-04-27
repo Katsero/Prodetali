@@ -9,9 +9,6 @@
     <link rel="stylesheet" href=".//src/css/parts/header.css" />
     <link rel="stylesheet" href=".//src/css/parts/footer.css" />
     <link rel="stylesheet" href=".//src/css/parts/history.css" />
-    <link rel="stylesheet" href=".//src/css/pages/constractorPA.css" />
-    <link rel="stylesheet" href=".//src/css/pages/constractorPA_tablet.css" />
-    <link rel="stylesheet" href=".//src/css/parts/services_container.css" />
     <link rel="stylesheet" href=".//src/css/pages/aboutUs.css" />
     <link
       href="https://myfonts.ru/myfonts?fonts=bookman-old-style"

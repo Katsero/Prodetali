@@ -23,35 +23,14 @@ main {
     display: flex;
     flex-direction: row;
 }
-  h2, select {
-      font-size: 2rem;
-  }  
-.filters {
-    margin: 0;
-}
-.filters__category {
-    width: 100%;
-    font-family: 'Bookman';
-}
-.filters__name {
-    margin-bottom: 1.0rem;
-    font-family: 'RobotoMedium';
-    color: var(--blue-accent);
+
+h2,
+select {
+    font-size: 2rem;
 }
 
-.filters__select {
-    width: 100%;
-    border-radius: 1.3rem;
-    padding: 1.0rem;
-    background-color: #C4C4C4;
-    color: #657996;
-}
-.filters__button {
-    width: 15.0rem;
-    align-self: center;
-    padding: 1.0rem;
-}
-p, button {
+p,
+button {
     margin: 0;
     font-size: 1.8rem;
 }
@@ -63,6 +42,7 @@ p, button {
     padding: 3.4rem 3rem;
     margin: 0;
 }
+
 .list__ad {
     display: flex;
     flex-direction: row;
@@ -72,22 +52,27 @@ p, button {
     width: 100%;
     gap: 3rem;
 }
+
 .ad__main_part {
     display: flex;
     flex-direction: row;
     gap: 1rem;
     margin: 0;
 }
+
 .ad__img {
     margin: 0;
 }
+
 .ad__author {
     width: 11rem;
     text-align: center;
 }
+
 .ad__description {
     font-size: 1.7rem;
 }
+
 .ad__buttons_container {
     justify-self: flex-end;
     margin: 0;
@@ -96,6 +81,8 @@ p, button {
     gap: 2rem;
     justify-content: center;
 }
-.detail, .take {
+
+.detail,
+.take {
     padding: 0.9rem 3.2rem;
 }

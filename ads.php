@@ -12,8 +12,6 @@
   <link rel="stylesheet" href=".//src/css/parts/history.css" />
   <link rel="stylesheet" href=".//src/css/parts/filters.css" />
   <link rel="stylesheet" href="./src/css/pages/ads.css" />
-  <link href="https://myfonts.ru/myfonts?fonts=bookman-old-style" rel="stylesheet" type="text/css" />
-  <script src="js/contractorAP.js" defer></script>
 </head>
 
 <body>
@@ -65,20 +63,20 @@
         <p class="history__text history__location">Местоположение: Москва</p>
   </section>
   <main>
-  <aside class="filters">
-      <div class="filters__category">
-        <h2 class="filters__name">Категория</h2>
-        <select class="filters__select">
-          <option>Категория</option>
-        </select>
-      </div>
-      <div class="filters__category">
-        <h2 class="filters__name">Подкатегория</h2>
-        <select class="filters__select">
-          <option>Подкатегория</option>
-        </select>
-      </div>
-      <button class="filters__button button--orange">Применить</button>
+    <aside class="filters">
+        <div class="filters__category">
+          <h2 class="filters__name">Категория</h2>
+          <select class="filters__select">
+            <option>Категория</option>
+          </select>
+        </div>
+        <div class="filters__category">
+          <h2 class="filters__name">Подкатегория</h2>
+          <select class="filters__select">
+            <option>Подкатегория</option>
+          </select>
+        </div>
+        <button class="filters__button button--orange">Применить</button>
     </aside>
     <div class="list__wrapper">
         <div class="list__ad">
