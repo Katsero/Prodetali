@@ -41,8 +41,7 @@
               <a class="navigation__link" href="chat.php">Чат</a>
             </li>
             <li class="navigation__item">
-              <a class="navigation__link navigation__authenticate"
-                href="./_next/regist/sign-up.php">Войти/Регистрация</a>
+              <a class="navigation__link" href="log-in.php">Войти</a> 
             </li>
           </ul>
         </nav>

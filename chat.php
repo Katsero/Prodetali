@@ -10,6 +10,7 @@
   <link rel="stylesheet" href=".//src/css/parts/header.css" />
   <link rel="stylesheet" href=".//src/css/parts/footer.css" />
   <link rel="stylesheet" href=".//src/css/parts/history.css" />
+  <link rel="stylesheet" href="./src/css/pages/index_tablet.css" />
   <link rel="stylesheet" href=".//src/css/pages/constractorPA.css" />
   <link rel="stylesheet" href=".//src/css/pages/constractorPA_tablet.css" />
   <link rel="stylesheet" href=".//src/css/parts/services_container.css" />
@@ -65,9 +66,12 @@
   </section>
   <main>
     <div class="chats__wrapper">
-        <input class="search" value="" type="text" placeholder="Поиск">
+        <div class="search_container">
+          <input class="search" value="" type="text" placeholder="Поиск">
+          <img class="search_img" src="public/search_chat.svg" alt="">
+        </div> 
         <div class="chats__container">
-            <a class="message__wrapper" href="">
+            <a href="currentChat.php" class="message__wrapper">
                 <img src="./public/chat_default_logo.png" alt="logo" class="message__logo">
                 <div class="message">
                     <p class="message__title">ООО "Металлюга"</p>
@@ -75,7 +79,7 @@
                 </div>
                 <p class="message__time">8ч</p>
             </a>
-            <a class="message__wrapper">
+            <a href="currentChat.php" class="message__wrapper">
                 <img src="./public/chat_default_logo.png" alt="logo" class="message__logo">
                 <div class="message">
                     <p class="message__title">ООО "ТитанМет"</p>
@@ -83,7 +87,7 @@
                 </div>
                 <p class="message__time">1д</p>
             </a>
-            <a class="message__wrapper">
+            <a href="currentChat.php" class="message__wrapper">
                 <img src="./public/chat_default_logo.png" alt="logo" class="message__logo">
                 <div class="message">
                     <p class="message__title">ООО "ПрокатСервис"</p>
@@ -91,7 +95,7 @@
                 </div>
                 <p class="message__time">1д</p>
             </a>
-            <a class="message__wrapper">
+            <a href="currentChat.php" class="message__wrapper">
                 <img src="./public/chat_default_logo.png" alt="logo" class="message__logo">
                 <div class="message">
                     <p class="message__title">ООО "ПерфектСталь"</p>
@@ -102,7 +106,7 @@
         </div>
     </div>
     <div class="messages__filter">
-        <button type="button" class="messages__all messeges__current_filter">Все</button>
+        <button autofocus type="button" class="messages__all messeges__current_filter">Все</button>
         <button type="button" class="messages__unread messeges__current_filter">Непрочитанные</button>
         <button type="button" class="messages__archive messeges__current_filter">Архив</button>
     </div>

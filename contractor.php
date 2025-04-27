@@ -41,8 +41,7 @@
                             <a class="navigation__link" href="">Чат</a>
                         </li>
                         <li class="navigation__item">
-                            <a class="navigation__link navigation__authenticate"
-                                href="./_next/regist/sign-up.php">Войти/Регистрация</a>
+                            <a class="navigation__link" href="log-in.php">Войти</a>
                         </li>
                     </ul>
                 </nav>
@@ -82,7 +81,7 @@
                     ✔ Гибкая ценовая политика и индивидуальный подход к каждому клиенту<br>
                     ✔ Надежные партнеры и своевременная доставка
                 </p>
-                <button class="information__button-chat button--orange">Написать</button>
+                <a class="information__button-chat button--orange" href="currentChat.php">Написать</a>
             </div>
         </section>
         <div class="divider">Услуги</div>

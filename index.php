@@ -15,7 +15,6 @@ $user = currentUser();
   <link rel="stylesheet" href="./src/css/pages/index_tablet.css" />
   <link rel="stylesheet" href="./src/css/parts/header.css" />
   <link rel="stylesheet" href="./src/css/parts/footer.css" />
-  <link rel="stylesheet" href="./src/css/parts/modal.css" />
   <link href="https://myfonts.ru/myfonts?fonts=bookman-old-style" rel="stylesheet" type="text/css" />
   <script src="js/modalEntryRegist.js" defer></script>
 </head>
@@ -45,13 +44,7 @@ $user = currentUser();
               <a class="navigation__link" href="chat.php">Чат</a>
             </li>
             <li class="navigation__item">
-              <?php
-              if (isset($user['id'])) {
-                echo '<a class="navigation__link navigation__authenticate" href="/Prodetali/_next/regist/account.php">Личный кабинет</a>';
-              } else {
-                echo '<a class="navigation__link navigation__authenticate" href="/Prodetali/_next/regist/log-in.php">Войти</a>';
-              }
-              ?>
+              <a class="navigation__link" href="log-in.php">Войти</a>
             </li>
           </ul>
         </nav>
@@ -77,7 +70,8 @@ $user = currentUser();
         Платформа, где заказчики находят исполнителей, а исполнители – новые
         возможности!
       </p>
-      <?php
+      <a class="hero__link button--orange" href="log-in.php">Присоединяйтесь сейчас</a>
+      <!-- <?php
         if (isset($user['id'])) {
           echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="hero__link button--orange">
           Присоединяйтесь сейчас
@@ -88,7 +82,7 @@ $user = currentUser();
         </a>';
           // во время разработки href="/_next/regist/log-in.php" в else будет href="/_next/regist/contractorPA.php"
         }
-        ?>
+        ?> -->
       <img class="hero__backgroung-img" alt="background" src="./public/hero_background.png" />
     </section>
 
