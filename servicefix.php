@@ -14,67 +14,45 @@
   </head>
   <body>
     <header>
-      <div class="header__container">
-        <a class="header__content-left" href="index.php">
-          <img
-            class="header__logo"
-            src="public/logo_and_text.svg"
-            alt="Main logo here"
-          />
-        </a>
-        <div class="header__content-right">
-          <nav class="header__navigation navigation">
-            <ul class="navigation__list">
-              <li class="navigation__item">
-                <a class="navigation__link" href="ads.php">Объявления</a>
-              </li>
-              <li class="navigation__item">
-                <a class="navigation__link" href="contractors.php"
-                  >Исполнители</a
-                >
-              </li>
-              <li class="navigation__item">
-                <a class="navigation__link" href="services.php">Услуги</a>
-              </li>
-              <li class="navigation__item">
-                <a class="navigation__link" href="aboutUs.php">О нас</a>
-              </li>
-              <li class="navigation__item">
-                <a class="navigation__link" href="chat.php">Чат</a>
-              </li>
-              <li class="navigation__item">
-                <?php
-              if (isset($user['id'])) {
-                echo '<a class="navigation__link navigation__authenticate" href="/Prodetali/_next/regist/account.php">Личный кабинет</a>';
-              } else {
-                echo '<a class="navigation__link navigation__authenticate" href="/Prodetali/_next/regist/log-in.php">Войти</a>';
-              }
-              ?>
-              </li>
-            </ul>
-          </nav>
-          <?php
+    <div class="header__container">
+      <a class="header__content-left" href="index.php">
+        <img class="header__logo" src="public/logo_and_text.svg" alt="Main logo here" />
+      </a>
+      <div class="header__content-right">
+        <nav class="header__navigation navigation">
+          <ul class="navigation__list">
+            <li class="navigation__item">
+              <a class="navigation__link" href="ads.php">Объявления</a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="contractors.php">Исполнители</a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="services.php">Услуги</a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="aboutUs.php">О нас</a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="chat.php">Чат</a>
+            </li>
+          </ul>
+        </nav>
+        <?php
         if (isset($user['id'])) {
-          echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="link_to_profile">
+          echo '<a href="contractorPA.php" class="link_to_profile">
           <img class="header__icon" src="' . $user['icon'] . '" alt="' . $user['nickname'] . '" />
         </a>';
         } else {
-          echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="link_to_profile">
+          echo '<a href="contractorPA.php" class="link_to_profile">
           <img class="header__icon" src="./public/icon_profile.svg" alt="Profile" />
         </a>';
           // во время разработки href="/_next/regist/log-in.php" в else будет href="/_next/regist/contractorPA.php"
         }
         ?>
-        </div>
       </div>
-      <section class="history">
-        <p class="history__text history__links">
-          <a href="index.php">Главная</a> >> Личный кабинет >> Услуги >>
-          Изменить услугу
-        </p>
-        <p class="history__text history__location">Местоположение: Москва</p>
-      </section>
-    </header>
+    </div>
+  </header>
 
     <main>
       <aside class="main__navigation">

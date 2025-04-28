@@ -50,11 +50,11 @@ $user = currentUser();
         </nav>
         <?php
         if (isset($user['id'])) {
-          echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="link_to_profile">
+          echo '<a href="contractorPA.php" class="link_to_profile">
           <img class="header__icon" src="' . $user['icon'] . '" alt="' . $user['nickname'] . '" />
         </a>';
         } else {
-          echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="link_to_profile">
+          echo '<a href="contractorPA.php" class="link_to_profile">
           <img class="header__icon" src="./public/icon_profile.svg" alt="Profile" />
         </a>';
           // во время разработки href="/_next/regist/log-in.php" в else будет href="/_next/regist/contractorPA.php"
@@ -256,7 +256,7 @@ $user = currentUser();
           </div>
         </div>
       </div>
-      <a href="" class="rating__link button--orange">Смотреть всех исполнителей</a>
+      <a href="contractors.php" class="rating__link button--orange">Смотреть всех исполнителей</a>
     </section>
 
     <section class="requests">
@@ -332,7 +332,7 @@ $user = currentUser();
           </div>
         </div>
       </div>
-      <a href="" class="requests__gallery-link button--orange">Смотреть все объявления</a>
+      <a href="ads.php" class="requests__gallery-link button--orange">Смотреть все объявления</a>
     </section>
 
     <section class="faq">
