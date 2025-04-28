@@ -48,11 +48,11 @@
         </nav>
         <?php
         if (isset($user['id'])) {
-          echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="link_to_profile">
+          echo '<a href="contractorPA.php" class="link_to_profile">
           <img class="header__icon" src="' . $user['icon'] . '" alt="' . $user['nickname'] . '" />
         </a>';
         } else {
-          echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="link_to_profile">
+          echo '<a href="contractorPA.php" class="link_to_profile">
           <img class="header__icon" src="./public/icon_profile.svg" alt="Profile" />
         </a>';
           // во время разработки href="/_next/regist/log-in.php" в else будет href="/_next/regist/contractorPA.php"
@@ -71,7 +71,7 @@
       <aside class="main__navigation">
         <ul class="main__navigation-list">
           <li class="main__navigation-item">
-            <button class="main__navigation-button button-profile">
+            <button autofocus class="main__navigation-button button-profile">
               Профиль
             </button>
           </li>

@@ -61,7 +61,7 @@
         </div>
     </header>
     <section class="history">
-        <p class="history__text history__links"><a href="index.php">Главная</a> >> <a href="contranctors.php">Исполнители</a> >> ООО "Металлюга"</p>
+        <p class="history__text history__links"><a href="index.php">Главная</a> >> <a href="contractors.php">Исполнители</a> >> ООО "Металлюга"</p>
         <p class="history__text history__location">Местоположение: Москва</p>
     </section>
     <main>
