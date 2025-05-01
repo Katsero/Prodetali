@@ -163,6 +163,30 @@ class Network
     }
 
     /**
+     * @param string $columnName
+     * @param string $tableName
+     * 
+     * @return [type]
+     */
+    public static function onColumnExists(string $columnName, string $tableName)
+    {
+        try {
+            $stmt = self::$db->query("SHOW COLUMNS FROM " . $tableName . " LIKE '$columnName'");
+
+            if ($stmt->rowCount() === 0) {
+                $sql = "ALTER TABLE " . $tableName . " ADD COLUMN `$columnName` VARCHAR(255)";
+                self::$db->exec($sql);
+                error_log("Создание новой колонки '$columnName' в таблице '$tableName'");
+            }
+
+            return true;
+        } catch (\PDOException $e) {
+            error_log("Ошибка при проверке/создании колонки '$columnName' в таблице '$tableName': " . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
      * Статический метод для быстрого перенаправления
      * @param string $path Путь для перенаправления
      * @return bool

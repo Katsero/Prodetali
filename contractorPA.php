@@ -66,27 +66,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['exit'])) {
   }
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
-  $newGroup = (int) $_POST['group'] ?? 0;
-  if ($newGroup >= 100 && $newGroup <= 999) {
-    $userModel->onUpdateGroup($_SESSION['user']['id'], $newGroup);
-    $currentUser['group'] = $newGroup;
-    $_SESSION['success'] = 'Профиль успешно обновлен';
-  } else {
-    $_SESSION['error'] = 'Неверный номер группы';
-  }
-}
-
-// Обработка создания статьи
+// Обработка создания поста услуги
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_article'])) {
   $title = trim($_POST['title'] ?? '');
-  $content = trim($_POST['content'] ?? '');
+  $description = trim($_POST['description'] ?? '');
 
-  if (empty($title) || empty($content)) {
+  if (empty($title) || empty($description)) {
     $_SESSION['error'] = 'Пожалуйста, заполните все поля';
   } else {
     $articleModel = new Article();
-    if ($articleModel->addArticle($title, $content, $_SESSION['user']['id'])) {
+    if ($articleModel->addArticle($title, $description, $_SESSION['user']['id'])) {
       $_SESSION['success'] = 'Статья успешно создана';
     } else {
       $_SESSION['error'] = 'Ошибка при создании статьи';
@@ -94,9 +83,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_article'])) {
   }
 }
 
+// Обработка обновления профиля
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['profile__form'])) {
+  $fields = [
+    'username' => $_POST['username'] ?? '',
+    'phone' => $_POST['phone'] ?? '',
+    'mail' => $_POST['mail'] ?? '',
+    'company' => $_POST['company'] ?? '',
+    'avatar' => $_POST['avatar'] ?? ''
+  ];
+
+  // Обработка загрузки аватара
+  if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
+    // Получаем желаемое имя файла из формы или используем имя пользователя
+    $customName = $_POST['avatar_name'] ?? $_POST['username'] ?? null;
+    $avatarPath = $userModel->uploadFile($_FILES['avatar'], $_SESSION['user']['id'], $customName);
+    if ($avatarPath !== false) {
+      $fields['avatar'] = $avatarPath;
+    } else {
+      $_SESSION['error'] = 'Ошибка при загрузке аватара';
+    }
+  }
+
+  if ($userModel->onUpdateProfile('users', $fields, $_SESSION['user']['id'])) {
+    $_SESSION['success'] = 'Профиль успешно обновлен';
+  } else {
+    $_SESSION['error'] = 'Ошибка при обновлении профиля';
+  }
+
+  Network::onRedirect('/contractorPA.php');
+}
+
 // Получаем все статьи
 $articleModel = new Article();
 $articles = $articleModel->getArticleAll();
+$listMyArticle = $articleModel->getListMyArticle();
 
 //HTML
 include __DIR__ . '/viewHTML/account.html';

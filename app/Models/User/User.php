@@ -97,18 +97,98 @@ class User
     }
 
     /**
-     * @param int $userId
-     * @param int $newGroup
+     * @param array $fields Array of fields to update with their values
+     * @param int $userId User ID to update
      * 
-     * @return [type]
+     * @return bool
      */
-    public function onUpdateGroup(int $userId, int $newGroup)
+    public function onUpdateProfile(string $tableName, array $fields, int $userId)
     {
         try {
             $this->verifyTable;//check table
-            $stmt = $this->network->QuaryRequest__User['onUpdatePerformer_Customer'];
-            return $stmt->execute([$newGroup, $userId]);
+
+            foreach ($fields as $column => $value) {
+                Network::onColumnExists($column, $tableName);
+            }
+
+            $setClause = [];
+            $params = [];
+
+            foreach ($fields as $column => $value) {
+                $setClause[] = "`$column` = ?";
+                $params[] = $value;
+            }
+
+            // Add userId to params
+            $params[] = $userId;
+
+            $sql = "UPDATE " . $this->className . " SET " . implode(', ', $setClause) . " WHERE id = ?";
+            $stmt = self::$db->prepare($sql);
+
+            return $stmt->execute($params);
         } catch (\PDOException $e) {
+            error_log("Error updating profile: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Загружает файл и возвращает путь к нему
+     * @param array $file Массив с данными файла из $_FILES
+     * @param string $prefix Префикс для имени файла (обычно ID пользователя)
+     * @param string|null $customName Пользовательское имя файла (без расширения)
+     * @return string|false Путь к файлу или false в случае ошибки
+     */
+    function uploadFile(array $file, string $prefix = '', ?string $customName = null): string|false
+    {
+        try {
+            // Проверяем тип файла
+            $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+            if (!in_array($file['type'], $allowedTypes)) {
+                throw new \Exception('Недопустимый тип файла. Разрешены только JPG, PNG и GIF.');
+            }
+
+            // Проверяем размер файла (максимум 5MB)
+            if ($file['size'] > 5 * 1024 * 1024) {
+                throw new \Exception('Размер файла превышает 5MB.');
+            }
+
+            $uploadPath = __DIR__ . '/../../../public/avatar';
+
+            if (!is_dir($uploadPath)) {
+                if (!mkdir($uploadPath, 0777, true)) {
+                    throw new \Exception('Не удалось создать директорию для загрузки.');
+                }
+            }
+
+            $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+
+            // Формируем имя файла
+            if ($customName !== null) {
+                // Очищаем пользовательское имя от небезопасных символов
+                $customName = preg_replace('/[^a-zA-Z0-9_-]/', '', $customName);
+                $fileName = $customName . ".$ext";
+            } else {
+                $fileName = $prefix . '_' . time() . ".$ext";
+            }
+
+            $fullPath = "$uploadPath/$fileName";
+
+            // Проверяем, существует ли файл с таким именем
+            if (file_exists($fullPath)) {
+                // Добавляем временную метку к имени файла
+                $fileName = pathinfo($fileName, PATHINFO_FILENAME) . '_' . time() . ".$ext";
+                $fullPath = "$uploadPath/$fileName";
+            }
+
+            if (!move_uploaded_file($file['tmp_name'], $fullPath)) {
+                throw new \Exception('Ошибка при загрузке файла на сервер.');
+            }
+
+            // Возвращаем относительный путь для сохранения в БД
+            return "avatar/$fileName";
+        } catch (\Exception $e) {
+            error_log("Ошибка при загрузке файла: " . $e->getMessage());
             return false;
         }
     }

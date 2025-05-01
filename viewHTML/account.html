@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PROДетали -
     <?php
-    echo $user['username'];
+    echo $currentUser['username'];
     ?>
   </title>
   <link rel="stylesheet" href="/src/css/normalize.css" />
@@ -47,9 +47,9 @@
           </ul>
         </nav>
         <?php
-        if (isset($user['id'])) {
+        if (isset($currentUser['id'])) {
           echo '<a href="../contractorPA.php" class="link_to_profile">
-          <img class="header__icon" src="../public/icon_profile.svg" alt="' . $user['username'] . '" />
+          <img class="header__icon" src="../public/icon_profile.svg" alt="' . $currentUser['username'] . '" />
         </a>';
         } else {
           echo '<a href="../log-in.php" class="link_to_profile">
@@ -61,69 +61,247 @@
       </div>
     </div>
   </header>
-  <main>
-    <!-- TODO change on selected -->
-    <section class="history">
-      <p class="history__text history__links"><a href="../index.php">Главная</a> >> Личный кабинет</p>
-      <p class="history__text history__location">Местоположение: Москва</p>
-    </section>
-    <div class="main__wrapper">
-      <aside class="main__navigation">
-        <ul class="main__navigation-list">
-          <li class="main__navigation-item">
-            <button class="main__navigation-button button-profile">
-              Профиль
-            </button>
-          </li>
-          <li class="main__navigation-item">
-            <button class="main__navigation-button button-services">
-              Услуги
-            </button>
-          </li>
-          <li class="main__navigation-item">
-            <button class="main__navigation-button button-requests">
-              Заказы
-            </button>
-          </li>
-          <li class="main__navigation-item main__navigation-item-exit">
-            <form action="" method="POST">
-              <input type="hidden" name="exit">
-              <button class="main__navigation-button button-exit">Выйти</button>
-            </form>
-          </li>
-        </ul>
-      </aside>
+  <!-- TODO change on selected -->
+  <section class="history">
+    <p class="history__text history__links"><a href="../index.php">Главная</a> >> Личный кабинет</p>
+    <p class="history__text history__location">Местоположение: Москва</p>
+  </section>
+  <div class="main__wrapper">
+    <aside class="main__navigation">
+      <ul class="main__navigation-list">
+        <li class="main__navigation-item">
+          <button class="main__navigation-button button-profile">
+            Профиль
+          </button>
+        </li>
+        <li class="main__navigation-item">
+          <button class="main__navigation-button button-services">
+            Услуги
+          </button>
+        </li>
+        <li class="main__navigation-item">
+          <button class="main__navigation-button button-requests">
+            Заказы
+          </button>
+        </li>
+        <li class="main__navigation-item main__navigation-item-exit">
+          <form action="" method="POST">
+            <input type="hidden" name="exit">
+            <button class="main__navigation-button button-exit">Выйти</button>
+          </form>
+        </li>
+      </ul>
+    </aside>
 
+    <style>
+      /* перебиваем каскадом */
+      .main__navigation {
+        background-color: lightgray;
+      }
+
+      .main__navigation-button {
+        font-size: calc(1rem + 1vw);
+        display: flex;
+        padding: 1rem 2rem;
+        background: var(--blue-accent);
+        justify-content: center;
+        color: white;
+        align-items: center;
+        align-content: center;
+        flex-direction: row;
+      }
+
+      .profile__image {
+        mix-blend-mode: darken;
+        max-width: 18rem;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .profile__content-left {
+        max-width: none;
+        margin: 0;
+        overflow: hidden;
+        position: initial;
+        padding: 0;
+      }
+
+      .profile__form {
+        display: block;
+        margin: 0;
+        justify-content: none;
+      }
+
+      .profile__container {
+        gap: inherit;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      .profile__form {
+        max-width: 100%;
+      }
+
+      .ct-relative {
+        position: relative;
+      }
+    </style>
+
+
+    <main style="display: flex;flex-direction: column;gap: 20px;width: 100%;margin: 2rem;">
       <section class="profile">
-        <div class="profile__wrapper">
-          <div class="profile__container">
-            <div class="profile__content-left">
-              <img src="../public/default_logo.png" alt="" class="profile__image" />
-              <button class="profile__image-upload">
-                <img src="../public/logo_add_clip-button.svg" alt="logo_upload" class="profile__image-upload-clip">
-              </button>
-            </div>
-            <div class="profile__content-right">
-              <form action="" class="profile__form">
-                <input placeholder="Иванов" type="text" class="profile__input" />
-                <input placeholder="Иван" type="text" class="profile__input" /><input placeholder="Иванович" type="text"
-                  class="profile__input profile__input-patronymic" />
-                <input placeholder="+7 (999) 999-99-99" type="tel" class="profile__input" /><input
-                  placeholder="name@gmail.com" type="email" class="profile__input" />
-                <input placeholder='ООО "Металлюга"' type="text" class="profile__input" />
-                <p class="profile__text">
-                  — поле для обязательного заполнения
-                </p>
-              </form>
+        <form action="contractorPA.php" class="profile__form" method="POST" enctype="multipart/form-data">
+          <div class="profile__wrapper">
+            <div class="profile__container">
+              <div class="ct-relative">
+                <div class="profile__content-left">
+                  <img height="250px" width="250px"
+                    src="../public/<?php echo $currentUser['avatar'] ?? 'default_logo.png'; ?>" alt=""
+                    class="profile__image" />
+                  <div class="profile__image-upload">
+                    <input type="file" name="avatar" id="avatar-upload" accept="image/*" style="display: none;">
+                    <label for="avatar-upload" class="profile__image-upload-clip-wrapper">
+                      <img src="../public/logo_add_clip-button.svg" alt="logo_upload"
+                        class="profile__image-upload-clip">
+                    </label>
+                  </div>
+                  <style>
+                    .profile__image-upload {
+                      margin-top: 10px;
+                    }
+
+                    .profile__image-upload-clip-wrapper {
+                      cursor: pointer;
+                      display: inline-block;
+                    }
+
+                    .profile__image-upload-clip:hover {
+                      opacity: 0.8;
+                    }
+                  </style>
+                </div>
+              </div>
+              <div class="profile__content-right" style="display: flex;flex-direction: column;gap: 20px;">
+                <div class="alert alert-error"
+                  style="display: <?php echo isset($_SESSION['error']) ? 'block' : 'none'; ?>">
+                  <?php
+             if (isset($_SESSION['error'])) {
+             echo $_SESSION['error'];
+             unset($_SESSION['error']);
+             }
+             ?>
+                </div>
+
+                <div class="alert alert-success"
+                  style="display: <?php echo isset($_SESSION['success']) ? 'block' : 'none'; ?>">
+                  <?php
+             if (isset($_SESSION['success'])) {
+             echo $_SESSION['success'];
+             unset($_SESSION['success']);
+             }
+             ?>
+                </div>
+                <input name="username" placeholder="Иванов Иван Иванович" type="text" class="profile__input"
+                  value="<?php echo $currentUser['username']; ?>" />
+                <input name="phone" placeholder="+7 (999) 999-99-99" type="tel" class="profile__input"
+                  value="<?php echo $currentUser['phone'] ?? ''; ?>" />
+                <input name="mail" placeholder="name@gmail.com" type="email" class="profile__input"
+                  value="<?php echo $currentUser['mail'] ?? ''; ?>" />
+                <input name="company" placeholder='ООО "Металлюга"' type="text" class="profile__input"
+                  value="<?php echo $currentUser['company'] ?? ''; ?>" />
+                <input type="hidden" name="profile__form">
+                <p class="profile__text">— поле для обязательного заполнения</p>
+                <button class="profile__button button--orange">Сохранить изменения</button>
+              </div>
             </div>
           </div>
-          <button class="profile__button button--orange">Сохранить изменения</button>
-        </div>
+        </form>
       </section>
       <section class="services">
+        <style>
+          .services__wrapper {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            gap: 2rem;
+            margin: 2rem;
+            width: 100%;
+            flex-wrap: wrap;
+            align-items: center;
+          }
+
+          .container__card {
+            display: flex;
+            flex-direction: row-reverse;
+            width: 45rem;
+            height: 23rem;
+            border-radius: 4rem;
+            overflow: hidden;
+            box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
+            justify-content: space-around;
+            align-content: space-around;
+            flex-wrap: wrap;
+          }
+
+          .create_article {
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            border-radius: 4rem;
+            border: 1px solid #000;
+          }
+
+          .create_article:focus {
+            outline: none;
+            border: 1px solid #1283df;
+          }
+
+          .create_article:hover {
+            border: 1px solid #000;
+          }
+
+          .conetnt {
+            display: flex;
+            gap: 20px;
+            font-size: 1.5rem;
+            margin: 0;
+            padding: 0;
+          }
+        </style>
         <div class="services__wrapper">
-          <button class="services__button button--orange">Добавить услугу</button>
+          <form action="contractorPA.php" method="POST"
+            style="display: flex;gap: 20px;width: 100%;justify-content: space-between;align-items: center;">
+            <div class="conetnt">
+              <input type="hidden" name="create_article">
+              <input type="text" name="title" placeholder="Название услуги" class="create_article">
+              <input type="text" name="description" placeholder="Описание услуги" class="create_article">
+            </div>
+            <button class="services__button button--orange" style="margin: 0;">Добавить услугу</button>
+          </form>
           <div class="services__container container">
+            <?php
+          foreach ($listMyArticle as $article) {
+            echo '<div class="container__card">';
+            echo '<pre>Массив данных поста - ';
+            print_r($article);
+            echo '</pre>';
+            echo '<br>';
+            echo '<div class="container__card">';
+            echo '<img src="../public/laser.png" alt="Лазерная резка">';
+            echo '<div class="container__content">';
+            echo '<h3>' . $article['title'] . '</h3>';
+            echo '<p>' . $article['content'] . '</p>';
+            echo '<p>Создан: ' . $article['created_at'] . '</p>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+          }
+          ?>
+            <!-- <div class="services__container container">
             <div class="container__card">
               <img src="../public/laser.png" alt="Лазерная резка">
               <div class="container__content">
@@ -169,8 +347,8 @@
                 <p>Ручная электродуговая, полуавтоматом и сварка аргоном</p>
               </div>
             </div>
+          </div> -->
           </div>
-        </div>
       </section>
       <section class="requests">
         <div class="requests__container">
@@ -196,8 +374,8 @@
           </div>
         </div>
       </section>
-    </div>
-  </main>
+  </div>
+  </mainы>
   <footer>
     <div class="footer__wrapper">
       <div class="footer__block">
@@ -247,6 +425,17 @@
       также новейшие технологии и тенденции в этой области.
     </p>
   </footer>
+  <script defer type="module">
+    document.getElementById('avatar-upload').addEventListener('change', function (e) {
+      if (e.target.files && e.target.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          document.querySelector('.profile__image').src = e.target.result;
+        }
+        reader.readAsDataURL(e.target.files[0]);
+      }
+    });
+  </script>
 </body>
 
 </html>
