@@ -4,10 +4,12 @@ require_once __DIR__ . '/vendor/autoload.php';
 use App\Controllers\AuthController;
 use App\Models\Network\Network;
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
 
 // Если пользователь уже авторизован, перенаправляем на личный кабинет
-if (isset($_SESSION['user']) && isset($_SESSION['user']['id'])) {
+if (isset($_SESSION['user']['id'])) {
   Network::onRedirect('/contractorPA.php');
   exit;
 }

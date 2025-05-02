@@ -41,16 +41,17 @@ use App\Models\User\User;
 use App\Models\Article\Article;
 use App\Models\Network\Network;
 
-// Проверяем авторизацию
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
 
 $userModel = new User();
-$userModel->onSessionUser($_SESSION['user']['id'] ?? null);
+$userModel->onSessionUser($_SESSION['user']['id'] ?? 0);
+//check session user 
+//проверка на авторизацию
 
-// Получаем информацию о текущем пользователе
 $currentUser = $userModel->getUser('id', $_SESSION['user']['id']);
 
-// Если пользователь не найден, выходим из системы
 if (!$currentUser) {
   session_destroy();
   Network::onRedirect('/log-in.php');

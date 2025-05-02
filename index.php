@@ -42,7 +42,9 @@ use App\Models\User\User;
 // use App\Models\Network\Network;
 
 // Проверяем авторизацию
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+ session_start();
+}
 
 // Инициализируем переменные
 $currentUser = null;
