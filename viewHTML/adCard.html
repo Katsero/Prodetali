@@ -6,14 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PROДетали</title>
   <link rel="stylesheet" href="./src/css/normalize.css" />
-  <link rel="stylesheet" href=".//src/css/style.css" />
-  <link rel="stylesheet" href=".//src/css/pages/services.css" />
-  <link rel="stylesheet" href=".//src/css/parts/header.css" />
-  <link rel="stylesheet" href=".//src/css/parts/footer.css" />
-  <link rel="stylesheet" href=".//src/css/parts/filters.css" />
+  <link rel="stylesheet" href="./src/css/style.css" />
+  <link rel="stylesheet" href="./src/css/pages/index.css" />
+  <link rel="stylesheet" href="./src/css/pages/index_tablet.css" />
+  <link rel="stylesheet" href="./src/css/parts/header.css" />
+  <link rel="stylesheet" href="./src/css/parts/footer.css" />
+  <link rel="stylesheet" href="./src/css/pages/adCard.css" />
   <link rel="stylesheet" href=".//src/css/parts/history.css" />
-  <link rel="stylesheet" href=".//src/css/parts/services_container.css" />
   <link href="https://myfonts.ru/myfonts?fonts=bookman-old-style" rel="stylesheet" type="text/css" />
+  <script src="js/modalEntryRegist.js" defer></script>
 </head>
 
 <body>
@@ -41,89 +42,80 @@
               <a class="navigation__link" href="chat.php">Чат</a>
             </li>
             <li class="navigation__item">
-              <a class="navigation__link" href="log-in.php">Войти</a> 
+              <a class="navigation__link" href="log-in.php">Войти</a>
             </li>
           </ul>
         </nav>
-        <?php
-        if (isset($user['id'])) {
-          echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="link_to_profile">
-          <img class="header__icon" src="' . $user['icon'] . '" alt="' . $user['nickname'] . '" />
-        </a>';
-        } else {
-          echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="link_to_profile">
-          <img class="header__icon" src="./public/icon_profile.svg" alt="Profile" />
-        </a>';
-          // во время разработки href="/_next/regist/log-in.php" в else будет href="/_next/regist/contractorPA.php"
-        }
-        ?>
       </div>
     </div>
   </header>
   <section class="history">
-    <p class="history__text history__links"><a href="index.php">Главная</a> >> Услуги</p>
+    <p class="history__text history__links"><a href="index.php">Главная</a> >><a href="ads.php"> Объявления</a></p>
     <p class="history__text history__location">Местоположение: Москва</p>
   </section>
   <main>
-    <aside class="filters">
-      <div class="filters__category">
-        <h2 class="filters__name">Категория</h2>
-        <select class="filters__select">
-          <option>Категория</option>
-        </select>
-      </div>
-      <button class="filters__button button--orange">Применить</button>
-    </aside>
-    <section class="container">
-      <a class="container__card" href="service.php">
-        <img src="public/laser.png" alt="Лазерная резка">
-        <div class="container__content">
-          <h3>Лазерная резка металла</h3>
-          <p>В нашем парке оборудования 3 станка лазерной резки листового металла и станок лазерной резки труб
-          </p>
+    <div class="main_block_ad">
+        <h2 class="title_ad">Фрезерная обработка деталей из нержавеющей стали (#MT-2024-5678)</h2>
+        <div class="optionally_desc">
+            <div class="date_and_status">
+                <div class="date_wrapper">
+                    <p>Дата публикации:</p>
+                    <p class="date_of_create_ad">16.05.2024</p>
+                </div>
+                <div class="status_wrapper">
+                    <p>Статус:</p>
+                    <p class="status_of_ad">Активный</p>
+                </div>
+            </div>
+            <div class="separation_line"></div>
+            <div class="customer_wrapper">
+                <p>Заказчик:</p>
+                <p class="customer">Василий Л.</p>
+            </div>
         </div>
-      </a>
-
-      <a class="container__card" href="service.php">
-        <img src="public/welding.png" alt="Сварка металла">
-        <div class="container__content">
-          <h3>Сварка металла</h3>
-          <p>Ручная электродуговая, полуавтоматом и сварка аргоном</p>
+    </div>
+    <div class="descroption_wrapper">
+        <div class="description_container">
+            <h3>Описание</h3>
+            <p class="description_ad_text">
+                Необходимо изготовить партию деталей по предоставленному 3D-файлу (STEP/IGES). 
+                Требуется соблюдение шероховатости Ra 1.6 на ответственных поверхностях.
+            </p>
         </div>
-      </a>
-      <a class="container__card" href="service.php">
-        <img src="public/laser.png" alt="Лазерная резка">
-        <div class="container__content">
-          <h3>Лазерная резка металла</h3>
-          <p>В нашем парке оборудования 3 станка лазерной резки листового металла и станок лазерной резки труб
-          </p>
+        <div class="technical_specification">
+            <h3>Технические требования:</h3>
+            <div class="material">
+                <p>Материал:</p>
+                <p class="material_text">Нержавеющая сталь AISI 304</p>
+            </div>
+            <div class="billet_size">
+                <p>Размеры заготовки:</p>
+                <p class="billet_size_text">120 × 80 × 20 мм</p>
+            </div>
+            <div class="tolerances">
+                <p>Допуски:</p>
+                <p class="tolerances_text">±0.05 мм</p>
+            </div>
+            <div class="type_of_processing">
+                <p>Тип обработки:</p>
+                <p class="type_of_processing_text">3D-фрезеровка, черновая + чистовая</p>
+            </div>
+            <div class="batch_size">
+                <p>Объём партии: </p>
+                <p class="batch_size_text"> 50 шт.</p>
+            </div>
+            <div class="deadline">
+                <p>Срок исполнения: до </p>
+                <p class="deadline_text">20.11.2025</p>
+            </div>
+            <div class="files"> 
+                <p>Чертежи/файлы: </p>
+                <a href="#">[Скачать PDF]</a> 
+                <a href="#">[STEP-файл]</a>
+            </div>
         </div>
-      </a>
-
-      <a class="container__card" href="service.php">
-        <img src="public/welding.png" alt="Сварка металла">
-        <div class="container__content">
-          <h3>Сварка металла</h3>
-          <p>Ручная электродуговая, полуавтоматом и сварка аргоном</p>
-        </div>
-      </a>
-      <a class="container__card" href="service.php">
-        <img src="public/laser.png" alt="Лазерная резка">
-        <div class="container__content">
-          <h3>Лазерная резка металла</h3>
-          <p>В нашем парке оборудования 3 станка лазерной резки листового металла и станок лазерной резки труб
-          </p>
-        </div>
-      </a>
-
-      <a class="container__card" href="service.php">
-        <img src="public/welding.png" alt="Сварка металла">
-        <div class="container__content">
-          <h3>Сварка металла</h3>
-          <p>Ручная электродуговая, полуавтоматом и сварка аргоном</p>
-        </div>
-      </a>
-    </section>
+    </div>
+    <button class="button--orange take_order">Взять заказ</button>
   </main>
   <footer>
     <div class="footer__wrapper">
@@ -175,3 +167,5 @@
     </p>
   </footer>
 </body>
+
+</html>  

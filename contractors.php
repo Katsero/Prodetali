@@ -132,32 +132,32 @@
   </main>
   <footer>
     <div class="footer__wrapper">
-      <div class="footer__block">
+      <a class="footer__block" href="index.php" style="margin: 0;">
         <img src="./public/logo_and_text__footer.svg" alt="" class="footer__logo" />
-      </div>
+      </a>
       <div class="footer__block">
         <h3 class="footer__block-title">Компания</h3>
         <ul class="footer__block-list">
           <li class="footer__block-item">
-            <p class="footer__block-text">О нас</p>
+            <a class="footer__block-text" href="aboutUs.php">О нас</a>
           </li>
           <li class="footer__block-item">
-            <p class="footer__block-text">Отзывы</p>
+            <a class="footer__block-text" href="#">Отзывы</a>
           </li>
           <li class="footer__block-item">
-            <p class="footer__block-text">Контакты</p>
+            <a class="footer__block-text" href="#">Контакты</a>
           </li>
         </ul>
       </div>
       <div class="footer__block">
-        <h3 class="footer__block-title">Документы</h3>
+        <h3 class="footer__block-title" href="#">Документы</h3>
 
         <ul class="footer__block-list">
           <li class="footer__block-item">
-            <p class="footer__block-text">Пользовательское соглашение</p>
+            <a class="footer__block-text" href="#">Пользовательское соглашение</a>
           </li>
           <li class="footer__block-item">
-            <p class="footer__block-text">Политика конфиденциальности</p>
+            <a class="footer__block-text" href="#">Политика конфиденциальности</a>
           </li>
         </ul>
       </div>

@@ -4,7 +4,9 @@ footer {
     flex-direction: column;
     padding: 2.5rem;
 }
-
+.footer__block {
+    margin: 0;
+}
 .footer__wrapper {
     margin: 0;
     display: flex;

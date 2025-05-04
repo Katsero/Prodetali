@@ -18,7 +18,7 @@
   margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
-  font-family:' Georgia, 'Times New Roman', Times, serif';
+  font-family: Georgia, 'Times New Roman', Times, serif;
   --text: #0f2346;
   --white-text: #bcc0c3;
   --orange-accent: #cc5722;
@@ -69,6 +69,8 @@ a {
   color: white;
   background-color: var(--grey-accent);
   border: 0.2rem solid var(--grey-accent);
+  margin: 0;
+  font-size: 1.8rem;
 }
 
 .button--blue:hover {
