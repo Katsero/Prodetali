@@ -65,7 +65,7 @@ class AuthController
     /**
      * @var [type]
      */
-    private $path_login = '/log-in.php';
+    private $path_login = '/login.php';
     /**
      * @var [type]
      */
@@ -73,7 +73,7 @@ class AuthController
     /**
      * @var [type]
      */
-    private $path_logout = '/log-out.php';
+    private $path_logout = '/logout.php';
 
     public function __construct()
     {

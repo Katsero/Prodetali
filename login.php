@@ -34,22 +34,27 @@
  * @link https://github.com/TimQwees/Qwees_CorePro
  * 
  */
-
 require_once __DIR__ . '/vendor/autoload.php';
 
 use App\Controllers\AuthController;
 use App\Models\Network\Network;
 
-session_start();
-if (isset($_SESSION['user'])) {
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+
+// Если пользователь уже авторизован, перенаправляем на личный кабинет
+if (isset($_SESSION['user']['id'])) {
   Network::onRedirect('/contractorPA.php');
   exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  (new AuthController())->onRegist();
+$authController = new AuthController();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['mail']) && isset($_POST['password'])) {
+  $authController->onLogin();
 }
 
 //HTML
-include __DIR__ . '/viewHTML/regist.html';
+include __DIR__ . '/viewHTML/login.html';
 ?>
