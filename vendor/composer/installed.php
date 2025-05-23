@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'timqwees/chat-app',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => '660bc92276aebe71daf9f52c21beb1765eb524c5',
+        'pretty_version' => 'dev-final-restored',
+        'version' => 'dev-final-restored',
+        'reference' => '79767ea3c5361de037158a731f9ce617202db125',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'timqwees/chat-app' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => '660bc92276aebe71daf9f52c21beb1765eb524c5',
+            'pretty_version' => 'dev-final-restored',
+            'version' => 'dev-final-restored',
+            'reference' => '79767ea3c5361de037158a731f9ce617202db125',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

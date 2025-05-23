@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="./src/css/pages/index_tablet.css" />
   <link rel="stylesheet" href="./src/css/parts/header.css" />
   <link rel="stylesheet" href="./src/css/parts/footer.css" />
+  <link rel="stylesheet" href="./src/css/media/media.css" />
   <link href="https://myfonts.ru/myfonts?fonts=bookman-old-style" rel="stylesheet" type="text/css" />
   <script src="js/modalEntryRegist.js" defer></script>
 </head>
@@ -50,10 +51,10 @@
           <img class="header__icon" src="./public/icon_profile.svg" alt="' . $currentUser['username'] . '" />
         </a>';
         } else {
-          echo '<a href="/log-in.php" class="link_to_profile">
+          echo '<a href="/login.php" class="link_to_profile">
           <img class="header__icon" src="./public/icon_profile.svg" alt="Profile" />
         </a>';
-          // во время разработки href="/_next/regist/log-in.php" в else будет href="/_next/regist/contractorPA.php"
+          // во время разработки href="/_next/regist/login.php" в else будет href="/_next/regist/contractorPA.php"
         }
         ?>
       </div>
@@ -76,7 +77,7 @@
         echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="hero__link button--orange">
           Присоединяйтесь сейчас
         </a>';
-        // во время разработки href="/_next/regist/log-in.php" в else будет href="/_next/regist/contractorPA.php"
+        // во время разработки href="/_next/regist/login.php" в else будет href="/_next/regist/contractorPA.php"
       }
       ?> -->
       <img class="hero__backgroung-img" alt="background" src="./public/hero_background.png" />

@@ -38,6 +38,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 use App\Models\User\User;
+use App\Config\AuthCheck;
 // use App\Models\Article\Article;
 // use App\Models\Network\Network;
 
@@ -45,9 +46,6 @@ use App\Models\User\User;
 if (session_status() === PHP_SESSION_NONE) {
  session_start();
 }
-
-// Инициализируем переменные
-$currentUser = null;
 
 // Если пользователь авторизован, получаем его данные
 if (isset($_SESSION['user']) && isset($_SESSION['user']['id'])) {

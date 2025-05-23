@@ -3,7 +3,6 @@
 🛠️ [расписать].
    
 [![Tim](https://img.shields.io/github/forks/onwidget/astrowind.svg?style=social&label=forks&maxAge=86400&color=ff69b4)](https://t.me/timqwees)
-
 ```
 ├── _next/
 │   ├── css/
@@ -12,7 +11,7 @@
 │   └── js/
 │   └── panel/
 ├── regist/
-│   ├── log-in.php (main)
+│   ├── login.php (main)
 │   ├── sign-up.php (main)
 ```
 

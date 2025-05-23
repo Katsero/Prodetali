@@ -1,8 +1,7 @@
 @font-face {
-    font-family: "Bookman";
-    src: url("../fonts/Bookman/bookmanoldstyle.ttf")
-      format("truetype");
-    font-weight: 400;
+  font-family: "Bookman";
+  src: url("../fonts/Bookman/bookmanoldstyle.ttf") format("truetype");
+  font-weight: 400;
 }
 
 @font-face {
@@ -47,7 +46,8 @@ a {
   text-decoration: none;
 }
 
-.button--orange, .button--blue {
+.button--orange,
+.button--blue {
   border-radius: 6rem;
   cursor: pointer;
   font-family: 'Bookman';
@@ -77,4 +77,129 @@ a {
   color: var(--grey-accent);
   background-color: transparent;
   text-decoration: none;
+}
+
+.alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateX(120%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  max-width: 350px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+}
+
+.alert[style*="display: block"] {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.alert-error {
+  background-color: rgba(255, 59, 48, 0.95);
+  color: white;
+  border-left: 4px solid #ff3b30;
+}
+
+.alert-success {
+  background-color: rgba(52, 199, 89, 0.95);
+  color: white;
+  border-left: 4px solid #34c759;
+}
+
+.alert::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+.alert-error::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z'/%3E%3C/svg%3E");
+}
+
+.alert-success::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
+}
+
+.alert-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 16px;
+}
+
+.alert-close:hover {
+  opacity: 1;
+}
+
+.alert-close::before,
+.alert-close::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 2px;
+  background-color: white;
+  border-radius: 1px;
+}
+
+.alert-close::before {
+  transform: rotate(45deg);
+}
+
+.alert-close::after {
+  transform: rotate(-45deg);
+}
+
+.alert-content {
+  padding-right: 24px;
+  flex: 1;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(120%);
+    opacity: 0;
+  }
 }

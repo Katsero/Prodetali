@@ -1,0 +1,120 @@
+/* Медиа-запросы для мобильных устройств */
+
+/* Общие стили для мобильных устройств */
+@media screen and (max-width: 768px) {
+
+
+ html,
+ body {
+  overflow-x: hidden;
+ }
+
+ /* Шапка */
+ .header__container {
+  padding: 10px;
+ }
+
+ .header__logo {
+  width: 120px;
+ }
+
+ .navigation__list {
+  display: none;
+  /* Скрываем обычное меню */
+ }
+
+ /* Показываем иконку бургер-меню */
+ .burger-menu {
+  display: block;
+ }
+
+ /* Основной контент */
+ main {
+  padding: 10px;
+ }
+
+ /* Фильтры */
+ .filters {
+  width: 100%;
+  margin-bottom: 20px;
+ }
+
+ .filters__select {
+  width: 100%;
+ }
+
+ /* Карточки услуг и исполнителей */
+ .container__card {
+  width: 100%;
+  margin: 10px 0;
+ }
+
+ .container__content {
+  padding: 10px;
+ }
+
+ /* Футер */
+ .footer__wrapper {
+  flex-direction: column;
+  text-align: center;
+  padding: 20px 10px;
+ }
+
+ .footer__block {
+  margin: 10px 0;
+ }
+
+ .footer__extra {
+  padding: 10px;
+  font-size: 12px;
+ }
+
+ /* new */
+ .main__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  flex-wrap: wrap;
+ }
+
+ .main__navigation {
+  max-width: 100%;
+ }
+
+ .main__navigation-button {
+  border: solid 1px black;
+ }
+
+ .profile__container {
+  gap: inherit;
+  width: 100%;
+  display: flex;
+  flex-direction: column !important;
+  margin: 0;
+  justify-content: space-between;
+  align-items: flex-start;
+ }
+
+ .main__wrapper section {
+  padding: 2rem;
+ }
+
+ .services__container.container {
+  justify-content: center !important;
+ }
+
+ .header__container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column !important;
+  justify-content: space-between;
+ }
+
+ .navigation__list {
+  display: flex;
+  flex-direction: row !important;
+  gap: 3rem;
+  flex-wrap: wrap;
+ }
+}

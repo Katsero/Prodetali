@@ -54,7 +54,7 @@ $currentUser = $userModel->getUser('id', $_SESSION['user']['id']);
 
 if (!$currentUser) {
   session_destroy();
-  Network::onRedirect('/log-in.php');
+  Network::onRedirect('/login.php');
   exit;
 }
 
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['exit'])) {
   if (isset($_SESSION['user']) && isset($_SESSION['user']['id'])) {
     $userModel->updateSessionStatus('off', $_SESSION['user']['id']);
     session_destroy();
-    Network::onRedirect('/log-in.php');
+    Network::onRedirect('/login.php');
     exit;
   }
 }
@@ -81,6 +81,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_article'])) {
     } else {
       $_SESSION['error'] = 'Ошибка при создании статьи';
     }
+  }
+}
+
+// Обработка удаления поста услуги
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_article'])) {
+  $id = trim($_POST['delete_article'] ?? '');
+
+  if (!empty($id)) {
+    $articleModel = new Article();
+    if ($articleModel->removeArticle($id, $_SESSION['user']['id'])) {
+      $_SESSION['success'] = 'Статья успешно удалена';
+    } else {
+      $_SESSION['error'] = 'Ошибка при удалении статьи';
+    }
+  } else {
+    $_SESSION['error'] = 'Не указан ID статьи для удаления';
   }
 }
 

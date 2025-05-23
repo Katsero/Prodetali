@@ -1,3 +1,69 @@
+<?php
+/**
+ *
+ *  _____                                                                                _____
+ * ( ___ )                                                                              ( ___ )
+ *  |   |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|   |
+ *  |   |                                                                                |   |
+ *  |   |                                                                                |   |
+ *  |   |    ________  ___       __   _______   _______   ________                       |   |
+ *  |   |   |\   __  \|\  \     |\  \|\  ___ \ |\  ___ \ |\   ____\                      |   |
+ *  |   |   \ \  \|\  \ \  \    \ \  \ \   __/|\ \   __/|\ \  \___|_                     |   |
+ *  |   |    \ \  \\\  \ \  \  __\ \  \ \  \_|/_\ \  \_|/_\ \_____  \                    |   |
+ *  |   |     \ \  \\\  \ \  \|\__\_\  \ \  \_|\ \ \  \_|\ \|____|\  \                   |   |
+ *  |   |      \ \_____  \ \____________\ \_______\ \_______\____\_\  \                  |   |
+ *  |   |       \|___| \__\|____________|\|_______|\|_______|\_________\                 |   |
+ *  |   |             \|__|                                 \|_________|                 |   |
+ *  |   |    ________  ________  ________  _______   ________  ________  ________        |   |
+ *  |   |   |\   ____\|\   __  \|\   __  \|\  ___ \ |\   __  \|\   __  \|\   __  \       |   |
+ *  |   |   \ \  \___|\ \  \|\  \ \  \|\  \ \   __/|\ \  \|\  \ \  \|\  \ \  \|\  \      |   |
+ *  |   |    \ \  \    \ \  \\\  \ \   _  _\ \  \_|/_\ \   ____\ \   _  _\ \  \\\  \     |   |
+ *  |   |     \ \  \____\ \  \\\  \ \  \\  \\ \  \_|\ \ \  \___|\ \  \\  \\ \  \\\  \    |   |
+ *  |   |      \ \_______\ \_______\ \__\\ _\\ \_______\ \__\    \ \__\\ _\\ \_______\   |   |
+ *  |   |       \|_______|\|_______|\|__|\|__|\|_______|\|__|     \|__|\|__|\|_______|   |   |
+ *  |   |                                                                                |   |
+ *  |   |                                                                                |   |
+ *  |___|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|___|
+ * (_____)                                                                              (_____)
+ *
+ * Эта программа является свободным программным обеспечением: вы можете распространять ее и/или модифицировать
+ * в соответствии с условиями GNU General Public License, опубликованными
+ * Фондом свободного программного обеспечения (Free Software Foundation), либо в версии 3 Лицензии, либо (по вашему выбору) в любой более поздней версии.
+ *
+ * @author TimQwees
+ * @link https://github.com/TimQwees/Qwees_CorePro
+ *
+ */
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+use App\Models\User\User;
+use App\Models\Article\Article;
+use App\Models\Network\Network;
+
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+
+$userModel = new User();
+$userModel->onSessionUser($_SESSION['user']['id'] ?? 0);
+//check session user
+//проверка на авторизацию
+
+if (isset($_SESSION['user']['id'])) {
+  $currentUser = $userModel->getUser('id', $_SESSION['user']['id']);
+  if (!$currentUser) {
+    session_destroy();
+    Network::onRedirect('/login.php');
+    exit;
+  }
+} else {
+  // Handle the case where the user is not logged in
+  session_destroy();
+  Network::onRedirect('/login.php');
+  exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -14,90 +80,91 @@
   <link rel="stylesheet" href=".//src/css/pages/constractorPA.css" />
   <link rel="stylesheet" href="./src/css/pages/chat.css" />
   <link rel="stylesheet" href="./src/css/pages/currentChat.css" />
+  <link rel="stylesheet" href="./src/css/media/media.css" />
   <link href="https://myfonts.ru/myfonts?fonts=bookman-old-style" rel="stylesheet" type="text/css" />
   <script src="js/contractorAP.js" defer></script>
 </head>
 
 <body>
-    <header>
-      <div class="header__container">
-        <a class="header__content-left" href="index.php">
-          <img class="header__logo" src="public/logo_and_text.svg" alt="Main logo here" />
-        </a>
-        <div class="header__content-right">
-          <nav class="header__navigation navigation">
-            <ul class="navigation__list">
-              <li class="navigation__item">
-                <a class="navigation__link" href="ads.php">Объявления</a>
-              </li>
-              <li class="navigation__item">
-                <a class="navigation__link" href="contractors.php">Исполнители</a>
-              </li>
-              <li class="navigation__item">
-                <a class="navigation__link" href="services.php">Услуги</a>
-              </li>
-              <li class="navigation__item">
-                <a class="navigation__link" href="aboutUs.php">О нас</a>
-              </li>
-              <li class="navigation__item">
-                <a class="navigation__link" href="chat.php">Чат</a>
-              </li>
-            </ul>
-          </nav>
-          <?php
-          if (isset($user['id'])) {
-            echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="link_to_profile">
+  <header>
+    <div class="header__container">
+      <a class="header__content-left" href="index.php">
+        <img class="header__logo" src="public/logo_and_text.svg" alt="Main logo here" />
+      </a>
+      <div class="header__content-right">
+        <nav class="header__navigation navigation">
+          <ul class="navigation__list">
+            <li class="navigation__item">
+              <a class="navigation__link" href="ads.php">Объявления</a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="contractors.php">Исполнители</a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="services.php">Услуги</a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="aboutUs.php">О нас</a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="chat.php">Чат</a>
+            </li>
+          </ul>
+        </nav>
+        <?php
+        if (isset($user['id'])) {
+          echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="link_to_profile">
             <img class="header__icon" src="' . $user['icon'] . '" alt="' . $user['nickname'] . '" />
           </a>';
-          } else {
-            echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="link_to_profile">
+        } else {
+          echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="link_to_profile">
             <img class="header__icon" src="./public/icon_profile.svg" alt="Profile" />
           </a>';
-            // во время разработки href="/_next/regist/log-in.php" в else будет href="/_next/regist/contractorPA.php"
-          }
-          ?> 
-        </div>
+          // во время разработки href="/_next/regist/login.php" в else будет href="/_next/regist/contractorPA.php"
+        }
+        ?>
       </div>
-    </header>
-    <section class="history">
-        <p class="history__text history__links"><a href="index.php">Главная</a> >> <a href="chat.php">Чат</a></p>
-        <p class="history__text history__location">Местоположение: Москва</p>
-    </section>
-    <main>
-        <div class="display_history_messages">
-            <div class="message own_message">
-                <p class="content_message">Сообщение</p>
-                <img class="message_marker" src="public/read_message_marker.svg">
-            </div>
-            <div class="message alien_message">
-                <img class="user_logo" src="public/person_logo_chat.svg">
-                <p class="content_message">Сообщение</p>
-                <img class="message_marker" src="public/read_message_marker.svg">
-            </div>
-            <div class="message alien_message">
-                <img class="user_logo" src="public/person_logo_chat.svg">
-                <p class="content_message">Сообщение</p>
-                <img class="message_marker" src="public/read_message_marker.svg">
-            </div>
-            <div class="message own_message">
-                <p class="content_message">Сообщение</p>
-                <img class="message_marker" src="public/received_message_marker.svg">
-            </div>
-        </div>
-        <form class="sending_message">
-            <button type="button" class="add_documents">
-                <img src="public/clip_for_message.svg" alt="clip">
-            </button>
-            <input class="sending_message_input" placeholder="Сообщение">
-            <button type="button" class="add_emoji">
-                <img src="public/emoji_for_message.svg" alt="emoji">
-            </button>
-            <button type="submit" class="button_for_send_message">
-                <img class="button_for_send_message_img" src="public/send_message.svg" alt="send">
-            </button>
-        </form>
-    </main>
-    <footer>
+    </div>
+  </header>
+  <section class="history">
+    <p class="history__text history__links"><a href="index.php">Главная</a> >> <a href="chat.php">Чат</a></p>
+    <p class="history__text history__location">Местоположение: Москва</p>
+  </section>
+  <main>
+    <div class="display_history_messages">
+      <div class="message own_message">
+        <p class="content_message">Сообщение</p>
+        <img class="message_marker" src="public/read_message_marker.svg">
+      </div>
+      <div class="message alien_message">
+        <img class="user_logo" src="public/person_logo_chat.svg">
+        <p class="content_message">Сообщение</p>
+        <img class="message_marker" src="public/read_message_marker.svg">
+      </div>
+      <div class="message alien_message">
+        <img class="user_logo" src="public/person_logo_chat.svg">
+        <p class="content_message">Сообщение</p>
+        <img class="message_marker" src="public/read_message_marker.svg">
+      </div>
+      <div class="message own_message">
+        <p class="content_message">Сообщение</p>
+        <img class="message_marker" src="public/received_message_marker.svg">
+      </div>
+    </div>
+    <form class="sending_message">
+      <button type="button" class="add_documents">
+        <img src="public/clip_for_message.svg" alt="clip">
+      </button>
+      <input class="sending_message_input" placeholder="Сообщение">
+      <button type="button" class="add_emoji">
+        <img src="public/emoji_for_message.svg" alt="emoji">
+      </button>
+      <button type="submit" class="button_for_send_message">
+        <img class="button_for_send_message_img" src="public/send_message.svg" alt="send">
+      </button>
+    </form>
+  </main>
+  <footer>
     <div class="footer__wrapper">
       <a class="footer__block" href="index.php" style="margin: 0;">
         <img src="./public/logo_and_text__footer.svg" alt="" class="footer__logo" />
@@ -146,7 +213,6 @@
       также новейшие технологии и тенденции в этой области.
     </p>
   </footer>
-  </body>
-  
+</body>
+
 </html>
-      

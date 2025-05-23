@@ -81,7 +81,7 @@ class Database
                 return self::$instance;
             } catch (\PDOException $e) {
                 error_log("ошибка подключения к базе данных: " . $e->getMessage());
-                Network::onRedirect('/log-in.php');
+                Network::onRedirect('/login.php');
                 throw new RuntimeException('Ошибка подключения к базе данных. Пожалуйста, проверьте настройки.');
             }
         }

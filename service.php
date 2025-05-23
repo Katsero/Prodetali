@@ -2,85 +2,89 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PROДетали</title>
-    <link rel="stylesheet" href="./src/css/normalize.css" />
-    <link rel="stylesheet" href=".//src/css/style.css" />
-    <link rel="stylesheet" href=".//src/css/pages/service.css" />
-    <link rel="stylesheet" href=".//src/css/parts/header.css" />
-    <link rel="stylesheet" href=".//src/css/parts/footer.css" />
-    <link rel="stylesheet" href=".//src/css/parts/history.css" />
-    <link rel="stylesheet" href=".//src/css/parts/filters.css" />
-    <link href="https://myfonts.ru/myfonts?fonts=bookman-old-style" rel="stylesheet" type="text/css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PROДетали</title>
+  <link rel="stylesheet" href="./src/css/normalize.css" />
+  <link rel="stylesheet" href=".//src/css/style.css" />
+  <link rel="stylesheet" href=".//src/css/pages/service.css" />
+  <link rel="stylesheet" href=".//src/css/parts/header.css" />
+  <link rel="stylesheet" href=".//src/css/parts/footer.css" />
+  <link rel="stylesheet" href=".//src/css/parts/history.css" />
+  <link rel="stylesheet" href=".//src/css/parts/filters.css" />
+  <link rel="stylesheet" href="/src/css/media/media.css" />
+  <link href="https://myfonts.ru/myfonts?fonts=bookman-old-style" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-    <header>
-        <div class="header__container">
-            <a class="header__content-left" href="index.php">
-                <img class="header__logo" src="public/logo_and_text.svg" alt="Main logo here" />
-            </a>
-            <div class="header__content-right">
-                <nav class="header__navigation navigation">
-                    <ul class="navigation__list">
-                        <li class="navigation__item">
-                            <a class="navigation__link" href="">Объявления</a>
-                        </li>
-                        <li class="navigation__item">
-                            <a class="navigation__link" href="contractors.php">Исполнители</a>
-                        </li>
-                        <li class="navigation__item">
-                            <a class="navigation__link" href="services.php">Услуги</a>
-                        </li>
-                        <li class="navigation__item">
-                            <a class="navigation__link" href="">О нас</a>
-                        </li>
-                        <li class="navigation__item">
-                            <a class="navigation__link" href="">Чат</a>
-                        </li>
-                        <li class="navigation__item">
-                            <a class="navigation__link" href="log-in.php">Войти</a>
-                        </li>
-                    </ul>
-                </nav>
-                <?php
-                    if (isset($user['id'])) {
-                    echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="link_to_profile">
-                    <img class="header__icon" src="' . $user['icon'] . '" alt="' . $user['nickname'] . '" />
-                    </a>';
-                    } else {
-                    echo '<a href="/Prodetali/_next/regist/contractorPA.php" class="link_to_profile">
-                    <img class="header__icon" src="./public/icon_profile.svg" alt="Profile" />
-                    </a>';
-                    // во время разработки href="/_next/regist/log-in.php" в else будет href="/_next/regist/contractorPA.php"
-                    }
-                    ?>
-            </div>
-        </div>
-    </header>
-    <section class="history">
-        <p class="history__text history__links"><a href="index.php">Главная</a> >> <a
-                href="contractors.php">Исполнители</a> >> <a href="contractor.php">ООО "Металлюга"</a> >> Лазерная
-            резка металла</p>
-        <p class="history__text history__location">Местоположение: Москва</p>
+  <header>
+    <div class="header__container">
+      <a class="header__content-left" href="index.php">
+        <img class="header__logo" src="public/logo_and_text.svg" alt="Main logo here" />
+      </a>
+      <div class="header__content-right">
+        <nav class="header__navigation navigation">
+          <ul class="navigation__list">
+            <li class="navigation__item">
+              <a class="navigation__link" href="">Объявления</a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="contractors.php">Исполнители</a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="services.php">Услуги</a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="">О нас</a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="">Чат</a>
+            </li>
+            <li class="navigation__item">
+              <?php if (isset($_SESSION['user']) && isset($_SESSION['user']['id'])): ?>
+                <a class="navigation__link" href="contractorPA.php">В кабинет</a>
+              <?php else: ?>
+                <a class="navigation__link" href="login.php">Войти</a>
+              <?php endif; ?>
+            </li>
+          </ul>
+        </nav>
+        <?php
+        if (isset($user['id'])) {
+          echo '<a href="contractorPA.php" class="link_to_profile">
+          <img class="header__icon" src="' . $user['icon'] . '" alt="' . $user['nickname'] . '" />
+        </a>';
+        } else {
+          echo '<a href="login.php" class="link_to_profile">
+          <img class="header__icon" src="./public/icon_profile.svg" alt="Profile" />
+        </a>';
+        }
+        ?>
+      </div>
+    </div>
+  </header>
+  <section class="history">
+    <p class="history__text history__links"><a href="index.php">Главная</a> >> <a href="contractors.php">Исполнители</a>
+      >> <a href="contractor.php">ООО "Металлюга"</a> >> Лазерная
+      резка металла</p>
+    <p class="history__text history__location">Местоположение: Москва</p>
+  </section>
+  <main>
+    <section class="container__card">
+      <img src="public/laser.png" alt="Лазерная резка металла">
+      <div class="container__content">
+        <h3 class="container__header">Лазерная резка металла</h3>
+        <p class="container__company">ООО "Металлюга"</p>
+        <p>Цена: <span class="container__price">от 50 000 руб.</span></p>
+        <p>Оборудование: <span class="container__equpment">Оптоволоконная установка лазерного раскроя IRONMAC C,
+            автоматизированные комплексы
+            лазерной резки YAWEI SMD HLE</span></p>
+        <a href="currentChat.php" class="container__chat button--orange"> Написать</a>
+      </div>
     </section>
-    <main>
-        <section class="container__card">
-            <img src="public/laser.png" alt="Лазерная резка металла">
-            <div class="container__content">
-                <h3 class="container__header">Лазерная резка металла</h3>
-                <p class="container__company">ООО "Металлюга"</p>
-                <p>Цена: <span class="container__price">от 50 000 руб.</span></p>
-                <p>Оборудование: <span class="container__equpment">Оптоволоконная установка лазерного раскроя IRONMAC C,
-                        автоматизированные комплексы
-                        лазерной резки YAWEI SMD HLE</span></p>
-                <a href="currentChat.php"class="container__chat button--orange"> Написать</a>
-            </div>
-        </section>
-        </div>
-    </main>
-    <footer>
+    </div>
+  </main>
+  <footer>
     <div class="footer__wrapper">
       <a class="footer__block" href="index.php" style="margin: 0;">
         <img src="./public/logo_and_text__footer.svg" alt="" class="footer__logo" />
@@ -129,5 +133,5 @@
       также новейшие технологии и тенденции в этой области.
     </p>
   </footer>
-    </footer>
+  </footer>
 </body>

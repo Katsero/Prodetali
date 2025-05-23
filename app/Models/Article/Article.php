@@ -62,7 +62,7 @@ class Article
     /**
      * @var [type]
      */
-    private $path_login = '/log-in.php';
+    private $path_login = '/login.php';
 
     public function __construct()
     {
