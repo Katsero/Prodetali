@@ -14,6 +14,8 @@ Prodetali - это современная платформа для работы
 
 ## 📁 Структура проекта
 
+ю
+
 ```
 ├── _next/
 │   ├── css/        # Стили
@@ -25,15 +27,6 @@ Prodetali - это современная платформа для работы
 │   ├── login.php   # Авторизация
 │   └── sign-up.php # Регистрация
 ```
-
-## 📸 Скриншоты интерфейса
-
-<div style="display: flex; flex-wrap: wrap; gap: 20px;">
-<img width="400px" src="https://s.iimg.su/s/20/WcCqcATh2v1mRyjD2M1aGr0o6l2Clr2PKOeang2t.png">
-<img width="400px" src="https://s.iimg.su/s/20/soQBJZrsNdc4tngxlhFt5qwHN1K7OZ6LzQ0IUf3C.png">
-<img width="400px" src="https://s.iimg.su/s/20/VqULPBMsQdrrYe3lTpX7B0io73Kh1hGzgnCFuTfE.png">
-<img width="400px" src="https://s.iimg.su/s/20/kP6BAyTL77UUZORAk6txukTgUJ80caQ6XstvATLD.png">
-</div>
 
 ## 📝 История изменений
 
