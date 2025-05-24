@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="./src/css/parts/modal.css" />
   <link rel="stylesheet" href="./src/css/media/media.css" />
   <link href="https://myfonts.ru/myfonts?fonts=bookman-old-style" rel="stylesheet" type="text/css" />
-  <!-- <script src="js/modalEntryRegist.js" defer></script> -->
+  <script src="./js/notification.js" defer async></script>
 </head>
 
 <body>
@@ -26,23 +26,27 @@
     </div>
   </header>
   <main>
-    <div class="alert alert-error">
-      <?php
-if (isset($_SESSION['error'])) {
-echo $_SESSION['error'];
-unset($_SESSION['error']);
-}
-?>
-    </div>
 
-    <div class="alert alert-success">
-      <?php
-if (isset($_SESSION['success'])) {
-echo $_SESSION['success'];
-unset($_SESSION['success']);
-}
-?>
+    <?php if (!empty($_SESSION['error'])): ?>
+    <div class="alert alert-error" id="errorAlert">
+      <button type="button" class="alert-close" onclick="closeAlert(this, 'error')">×</button>
+      <div class="alert-content">
+        <?= htmlspecialchars($_SESSION['error']) ?>
+      </div>
     </div>
+    <?php unset($_SESSION['error']); ?>
+    <?php endif; ?>
+
+    <?php if (!empty($_SESSION['success'])): ?>
+    <div class="alert alert-success" id="successAlert">
+      <button type="button" class="alert-close" onclick="closeAlert(this, 'success')">×</button>
+      <div class="alert-content">
+        <?= htmlspecialchars($_SESSION['success']) ?>
+      </div>
+    </div>
+    <?php unset($_SESSION['success']); ?>
+    <?php endif; ?>
+
     <h2>Вход</h2>
     <form class="authorization__form" method="POST">
       <input placeholder="E-mail" class="authorization__form-input" type="email" name="mail" required>

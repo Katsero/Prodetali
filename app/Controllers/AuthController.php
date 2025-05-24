@@ -96,7 +96,7 @@ class AuthController
             if (empty($mail) || empty($password)) {
                 $_SESSION['error'] = 'Пожалуйста, заполните все поля';
                 Network::onRedirect($this->path_login);
-                exit;
+                return false;
             }
 
             try {
@@ -115,16 +115,16 @@ class AuthController
                     ];
                     $this->user->updateSessionStatus('on', $_SESSION['user']['id']);
                     Network::onRedirect('/contractorPA.php');
-                    exit;
+                    return true;
                 } else {
                     $_SESSION['error'] = 'Неверное имя пользователя или пароль';
                     Network::onRedirect($this->path_login);
-                    exit;
+                    return false;
                 }
             } catch (\PDOException $e) {
                 $_SESSION['error'] = 'Ошибка при входе в систему';
                 Network::onRedirect($this->path_login);
-                exit;
+                return false;
             }
         }
     }
@@ -132,43 +132,43 @@ class AuthController
     /**
      * @return [type]
      */
-    public function onRegist()
-    {
+    public function onRegist(
+        $username,
+        $mail,
+        $password,
+        $performer_customer,
+        $control_sender
+    ) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $mail = (string) trim($_POST['mail'] ?? '');
-            $username = (string) trim($_POST['username'] ?? '');
-            $password = $_POST['password'] ?? '';
-            $performer_customer = (string) ($_POST['performer-customer'] ?? '');
-
             // Валидация
             if (empty($username) || empty($password) || empty($performer_customer) || empty($mail)) {
                 $_SESSION['error'] = 'Пожалуйста, заполните все поля';
                 Network::onRedirect($this->path_regist);
-                exit;
+                return false;
             }
 
             if (strlen($username) < 3) {
                 $_SESSION['error'] = 'Имя пользователя должно содержать минимум 3 символа';
                 Network::onRedirect($this->path_regist);
-                exit;
+                return false;
             }
 
             if (strlen($password) < 6) {
                 $_SESSION['error'] = 'Пароль должен содержать минимум 6 символов';
                 Network::onRedirect($this->path_regist);
-                exit;
+                return false;
             }
 
             if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
                 $_SESSION['error'] = 'Неверный формат почты';
                 Network::onRedirect($this->path_regist);
-                exit;
+                return false;
             }
 
             if ($performer_customer !== 'performer' && $performer_customer !== 'order') {
                 $_SESSION['error'] = 'Вы должны выбрать роль';
                 Network::onRedirect($this->path_regist);
-                exit;
+                return false;
             }
 
             try {
@@ -178,7 +178,7 @@ class AuthController
                 if ($stmt->fetchColumn() > 0) {
                     $_SESSION['error'] = "Пользователь с именем: $username уже существует";
                     Network::onRedirect($this->path_regist);
-                    exit;
+                    return false;
                 }
 
                 $stmt = $this->network->QuaryRequest__Auth['onRegist_fetchUser_ByMail'];
@@ -186,25 +186,29 @@ class AuthController
                 if ($stmt->fetchColumn() > 0) {
                     $_SESSION['error'] = "Почта: $mail уже существует";
                     Network::onRedirect($this->path_regist);
-                    exit;
+                    return false;
                 }
 
-                $stmt = $this->network->QuaryRequest__Auth['onRegist_Create_User'];
-                $stmt->execute([
-                    $username,
-                    $mail,
-                    $performer_customer,
-                    password_hash($password, PASSWORD_DEFAULT),
-                    'on'//session
-                ]);
+                if ($control_sender !== 'not') {
 
-                $_SESSION['success'] = "Регистрация успешна! $username, Теперь вы можете войти";
-                Network::onRedirect($this->path_login);
-                exit;
+                    $stmt = $this->network->QuaryRequest__Auth['onRegist_Create_User'];
+                    $stmt->execute([
+                        $username,
+                        $mail,
+                        $performer_customer,
+                        password_hash($password, PASSWORD_DEFAULT),
+                        'on'//session
+                    ]);
+
+                    $_SESSION['success_'] = "Регистрация успешна! $username, Теперь вы можете войти";
+                    Network::onRedirect($this->path_login);
+                    return true;
+                }
+                return true;
             } catch (\PDOException $e) {
                 $_SESSION['error'] = 'Ошибка при регистрации: ' . $e->getMessage();
                 Network::onRedirect($this->path_regist);
-                exit;
+                return false;
             }
         }
     }
@@ -224,4 +228,33 @@ class AuthController
         Network::onRedirect($this->path_login);
         exit;
     }
+
+    //new
+    public function generateVerificationCode($userId)
+    {
+        $code = sprintf("%04d", mt_rand(0, 9999));
+        $expiresAt = date('Y-m-d H:i:s', strtotime('+1 hour'));
+
+        $stmt = $this->network->QuaryRequest__Article['onRegist_Send_Verefy_Key'];
+        $stmt->execute([$userId, $code, $expiresAt]);
+
+        return $code;
+    }
+    public function verifyCode($userId, $code)
+    {
+        // Проверяем код в базе данных
+        $stmt = $this->network->QuaryRequest__Article['onRegist_Verefy_Key'];
+        $stmt->execute([$userId, $code]);
+
+        if ($stmt->rowCount() > 0) {
+            // Если код верный, удаляем его из базы
+            $deleteStmt = $this->network->QuaryRequest__Article['onRegist_Delete_Verefy_Key'];
+            $deleteStmt->execute([$userId]);
+            return true;
+        }
+
+        return false;
+    }
+
+    //end new
 }

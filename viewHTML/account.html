@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="/src/css/pages/constractorPA_tablet.css" />
   <link rel="stylesheet" href="/src/css/parts/services_container.css" />
   <link rel="stylesheet" href="/src/css/media/media.css" />
-  <link href="https://myfonts.ru/myfonts?fonts=bookman-old-style" rel="stylesheet" type="text/css" />
+  <script src="/js/notification.js" defer></script>
   <script src="/src/js/contractorAP.js" defer></script>
   <meta charset="UTF-8">
 </head>
@@ -941,40 +941,6 @@
     </p>
   </footer>
   <script defer type="module">
-    document.getElementById('avatar-upload').addEventListener('change', function (e) {
-      if (e.target.files && e.target.files[0]) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          document.querySelector('.profile__image').src = e.target.result;
-        }
-        reader.readAsDataURL(e.target.files[0]);
-      }
-    });
-  </script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const errorAlert = document.getElementById('errorAlert');
-      const successAlert = document.getElementById('successAlert');
-
-      function showAlert(alert) {
-        if (alert) {
-          alert.style.animation = 'slideIn 0.3s forwards';
-        }
-      }
-
-      showAlert(errorAlert);
-      showAlert(successAlert);
-    });
-
-    function closeAlert(button, type) {
-      const alert = button.parentElement;
-      alert.style.animation = 'slideOut 0.3s forwards';
-      setTimeout(() => {
-        alert.remove();
-      }, 300);
-      return false; // Prevent any default behavior
-    }
-
     document.addEventListener('DOMContentLoaded', function () {
       const buttons = document.querySelectorAll('.main__navigation-button[data-section]');
       const sections = document.querySelectorAll('.section');

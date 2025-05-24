@@ -5,11 +5,12 @@
     "require": {
         "php": ">=7.4",
         "ext-pdo": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "phpmailer/phpmailer": "^6.10"
     },
     "autoload": {
         "psr-4": {
             "App\\": "app/"
         }
     }
-} 
+}

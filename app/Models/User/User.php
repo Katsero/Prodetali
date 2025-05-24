@@ -126,6 +126,7 @@ class User
             $stmt = self::$db->prepare($sql);
 
             return $stmt->execute($params);
+
         } catch (\PDOException $e) {
             error_log("Error updating profile: " . $e->getMessage());
             return false;

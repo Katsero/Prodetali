@@ -38,43 +38,30 @@
 namespace App\Models\Network;
 
 use App\Config\Database;
+use App\Controllers\Structure;//new
+
 class Network
 {
-    /**
-     * @var [type]
-     */
     private static $db;
-    /**
-     * @var [type]
-     */
     public $QuaryRequest__Article = [];//array
-
-    /**
-     * @var [type]
-     */
     public $QuaryRequest__User = [];//array
-    /**
-     * @var [type]
-     */
     public $QuaryRequest__Auth = [];//array
-
-    /**
-     * @var [type]
-     */
     private static $table_users = 'users';
-    /**
-     * @var [type]
-     */
+    private static $table_verefy_register = 'verification_codes';//new
     private static $table_articles = 'poster';
+
+    private $structure;
 
     public function __construct(
     ) {
         self::$db = Database::getConnection();
         self::onTableCheck('users');
         self::onTableCheck('poster');
+        self::onTableCheck('verification_codes');//new
         $this->preparerRequestArticle();
         $this->preparerRequestUser();
         $this->preparerRequestAuth();
+        $this->structure = new Structure();//new
     }
 
     /**
@@ -90,14 +77,15 @@ class Network
                 case 'user':
                 case 'users_php':
                     if (!self::onTableExists(self::$table_users)) {//false
-
                         $sql = "CREATE TABLE IF NOT EXISTS `" . self::$table_users . "` (
             id INT AUTO_INCREMENT PRIMARY KEY,
             mail varchar(50) NOT NULL,
             username varchar(50) NOT NULL,
             password varchar(255) NOT NULL,
             performer_customer varchar(50) NOT NULL,
-            session VARCHAR(255) NOT NULL
+            session VARCHAR(255) NOT NULL,
+            is_verified BOOLEAN DEFAULT FALSE,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
                         self::$db->exec($sql);
                     }
@@ -119,7 +107,21 @@ class Network
                         self::$db->exec($sql);
                     }
                     break;
-
+                //new
+                case 'verification_codes':
+                    if (!self::onTableExists('verification_codes')) {
+                        $sql = "CREATE TABLE IF NOT EXISTS `verification_codes` (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            user_id INT NOT NULL,
+            code VARCHAR(4) NOT NULL,
+            expires_at TIMESTAMP NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
+                        self::$db->exec($sql);
+                    }
+                    break;
+                //end new
                 default:
                     if (!self::onTableExists($type)) {//false
 
@@ -271,8 +273,48 @@ class Network
                 'onRegist_fetchUser_ByUsername' => self::$db->prepare("SELECT * FROM " . self::$table_users . " WHERE username = ?"),
                 'onRegist_fetchUser_ByMail' => self::$db->prepare("SELECT * FROM " . self::$table_users . " WHERE mail = ?"),
                 'onRegist_Create_User' => self::$db->prepare("INSERT INTO " . self::$table_users . " (username, mail, performer_customer, password, session) VALUES (?, ?, ?, ?, ?)"),
+                'onRegist_Send_Verefy_Key' => self::$db->prepare("INSERT INTO " . self::$table_verefy_register . " (user_id, code, expires_at) VALUES (?, ?, ?)"),//new
+                'onRegist_Delete_Verefy_Key' => self::$db->prepare("DELETE FROM " . self::$table_verefy_register . " WHERE user_id = ?"),//new
+                'onRegist_Verefy_Key' => self::$db->prepare("SELECT * FROM " . self::$table_verefy_register . " WHERE user_id = ? AND code = ? AND expires_at > NOW() ORDER BY created_at DESC LIMIT 1"),//new
             ];
         }
         return $this->QuaryRequest__Auth;
     }
+
+    //new
+    public function onMail(string $to_mail, string $subject, string $body)
+    {
+        if (empty($to_mail)) {
+            error_log('Empty recipient email');
+            return false;
+        }
+        if (empty($subject)) {
+            error_log('Empty email subject');
+            return false;
+        }
+        if (empty($body)) {
+            error_log('Empty email body');
+            return false;
+        }
+
+        $mailer = [
+            "email" => "bingiabonbasv@gmail.com",//Отправитель 0
+            "pass" => "tlps uzrg imnf cekl",//Пароль для внешних приложений 1
+            "name" => "bingiabonbasv@gmail.com",//name 2
+            "subject" => $subject,//subject 3
+            "body" => $body,//Мessage 4
+            "to_email" => $to_mail,//Получатель 5
+            "port" => 587,//порт 6
+        ];
+
+        try {
+            $result = $this->structure->onPHPMailer($mailer);//send
+            error_log('Email sending result: ' . ($result ? 'success' : 'failed'));
+            return $result;
+        } catch (\Exception $e) {
+            error_log('Error sending email: ' . $e->getMessage());
+            return false;
+        }
+    }
+    //end new
 }

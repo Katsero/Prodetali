@@ -14,7 +14,108 @@
     <link rel="stylesheet" href="./src/css/parts/modal.css" />
     <link rel="stylesheet" href="./src/css/media/media.css" />
     <link href="https://myfonts.ru/myfonts?fonts=bookman-old-style" rel="stylesheet" type="text/css" />
-    <script src="js/modalEntryRegist.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="./js/modalEntryRegist.js" defer></script>
+    <script src="./js/notification.js" defer async></script>
+    <style>
+        .form-container {
+            transition: all 0.5s ease-in-out;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .form-container.hidden {
+            display: none;
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        .form-container.visible {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .code-inputs {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .code-input {
+            width: 80px !important;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .verification-message {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .requests__status {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 500;
+            font-family: Arial, Helvetica, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .requests__status--completed {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+            box-shadow: 0 2px 4px rgba(46, 125, 50, 0.1);
+        }
+
+        .requests__status--completed:hover {
+            background-color: #c8e6c9;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(46, 125, 50, 0.15);
+        }
+
+        .minimal {
+            font-size: 1.5rem;
+        }
+
+        .registration__registrate.minimal {
+            display: inline-block;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 1rem;
+            min-width: auto;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+            box-shadow: 0 2px 4px rgba(198, 40, 40, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            margin-left: 10%;
+        }
+
+        .registration__registrate.minimal:hover {
+            background-color: #ffcdd2;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(198, 40, 40, 0.15);
+        }
+
+        .nt {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+    </style>
 </head>
 
 <body>
@@ -26,48 +127,101 @@
         </div>
     </header>
     <main>
-        <div class="alert alert-error">
-            <?php
-   if (isset($_SESSION['error'])) {
-       echo $_SESSION['error'];
-       unset($_SESSION['error']);
-   }
-   ?>
+        <div class="profile__content-right">
+
+            <?php if (!empty($_SESSION['error'])): ?>
+            <div class="alert alert-error" id="errorAlert">
+                <button type="button" class="alert-close" onclick="closeAlert(this, 'error')">×</button>
+                <div class="alert-content">
+                    <?= htmlspecialchars($_SESSION['error']) ?>
+                </div>
+            </div>
+            <?php unset($_SESSION['error']); ?>
+            <?php endif; ?>
+
+            <?php if (!empty($_SESSION['success'])): ?>
+            <div class="alert alert-success" id="successAlert">
+                <button type="button" class="alert-close" onclick="closeAlert(this, 'success')">×</button>
+                <div class="alert-content">
+                    <?= htmlspecialchars($_SESSION['success']) ?>
+                </div>
+            </div>
+            <?php unset($_SESSION['success']); ?>
+            <?php endif; ?>
+
+            <?php if (!isset($_SESSION['show_verification_form']) || $_SESSION['show_verification_form'] === false): ?>
+            <div class="form-container" id="form1">
+                <h2>Регистрация</h2>
+                <form class="registration__form" id="registrationForm1" method="POST" action="/regist.php">
+                    <input placeholder="Введите имя" class="registration__form-input" type="text" name="username"
+                        required>
+                    <input placeholder="Введите E-mail" class="registration__form-input" type="email" name="mail"
+                        required value="timqwees@gmail.com">
+                    <input placeholder="Введите пароль" class="registration__form-input" type="password" id="password"
+                        name="password" required minlength="6">
+                    <input placeholder="Повторите пароль" class="registration__form-input" type="password"
+                        id="password-repeat" name="password" required minlength="6">
+                    <div class="registration__choose_role">
+                        <div class="role__performer">
+                            <input type="radio" name="performer-customer" value="performer" required>
+                            Хочу стать исполнителем
+                        </div>
+                        <div class="role__customer">
+                            <input type="radio" name="performer-customer" value="order" required>
+                            Хочу стать заказчиком
+                        </div>
+                    </div>
+                    <p class="registration__text">Нажимая на кнопку "Зарегистрироваться" вы принимаете условия
+                        <a href="#" class="registration__text_link">Пользовательского соглашения</a>
+                    </p>
+                    <button class="registration__registrate" type="submit">Продолжить</button>
+                </form>
+            </div>
+            <?php endif; ?>
+
+            <?php if (isset($_SESSION['show_verification_form']) && $_SESSION['show_verification_form'] === true): ?>
+
+            <div class="form-container" id="form2">
+                <h2>Подтверждение</h2>
+                <p class="verification-message requests__status">Введите 4-значный код, отправленный на
+                    <span class="requests__status requests__status--completed">
+                        <?php echo isset($_SESSION['registration_data']['mail']) ? htmlspecialchars($_SESSION['registration_data']['mail']) : ''; ?>
+                    </span>
+                </p>
+                <form class="registration__form" id="registrationForm2" method="POST" action="regist.php">
+                    <div class="code-inputs">
+                        <input name="code_one" class="registration__form-input code-input" type="text" maxlength="1"
+                            pattern="[0-9]" inputmode="numeric" required autofocus>
+                        <input name="code_two" class="registration__form-input code-input" type="text" maxlength="1"
+                            pattern="[0-9]" inputmode="numeric" required>
+                        <input name="code_three" class="registration__form-input code-input" type="text" maxlength="1"
+                            pattern="[0-9]" inputmode="numeric" required>
+                        <input name="code_four" class="registration__form-input code-input" type="text" maxlength="1"
+                            pattern="[0-9]" inputmode="numeric" required>
+                    </div>
+                    <button class="registration__registrate" type="submit">Подтвердить</button>
+                </form>
+            </div>
+
+            <?php endif; ?>
+            <form method="POST" class="nt">
+                <input name="reset" type="hidden">
+                <div>
+                    <a href="login.php" class="registration__registrate minimal" style="width: 100%;">Я уже
+                        зарегистрирован <i class="fa fa-reply-all"></i></a>
+                </div>
+                <button type="submit" class="registration__registrate minimal">Пройти регистрацию снова <i
+                        class="fa fa-refresh"></i></button>
+            </form>
         </div>
 
-        <div class="alert alert-success">
-            <?php
-   if (isset($_SESSION['success'])) {
-       echo $_SESSION['success'];
-       unset($_SESSION['success']);
-   }
-   ?>
-        </div>
-        <h2>Регистрация</h2>
-        <form class="registration__form" method="POST">
-            <input placeholder="Введите имя" class="registration__form-input" type="text" name="username" required>
-            <input placeholder="Введите E-mail" class="registration__form-input" type="email" name="mail" required>
-            <input placeholder="Введите пароль" class="registration__form-input" type="password" id="password"
-                name="password" required minlength="6">
-            <input placeholder="Повторите пароль" class="registration__form-input" type="password" id="password-repeat"
-                name="password" required minlength="6">
-            </div>
-            <div class="registration__choose_role">
-                <div class="role__performer">
-                    <input type="radio" name="performer-customer" value="performer">
-                    Хочу стать исполнителем
-                </div>
-                <div class="role__customer">
-                    <input type="radio" name="performer-customer" value="order">
-                    Хочу стать заказчиком
-                </div>
-            </div>
-            <p class="registration__text">Нажимая на кнопку "Зарегистрироваться" вы принимаете условия
-                <a href="#" class="registration__text_link">Пользовательского соглашения</a>
-            </p>
-            <button class="registration__registrate" type="submit">Зарегистрироваться</button>
-        </form>
-        <a href="login.php" class="registration__authorization">Я уже зарегистрирован</a>
+        <!-- ЕСЛИ ХОТИТЕ УЗНАТЬ СОДЕРЖАНИЕ ВСЕХ СЕССИЙ НА СТРАНИЦЕ ДЛЯ РАБОТЫ С ОШИБКАМИ, 
+         ТО НУЖНО РАСКРЫТЬ КОММЕНТАРИЙ -->
+        <!-- <?php
+        echo "<pre><h3>";
+        var_dump($_SESSION);
+        echo "</h3></pre>";
+        ?> -->
     </main>
     <footer>
         <div class="footer__wrapper">
@@ -118,6 +272,34 @@
             также новейшие технологии и тенденции в этой области.
         </p>
     </footer>
+    <script>
+        // Проверка паролей
+        const registrationForm1 = document.getElementById('registrationForm1');
+        if (registrationForm1) {
+            registrationForm1.addEventListener('submit', function (e) {
+                const password = document.getElementById('password').value;
+                const passwordRepeat = document.getElementById('password-repeat').value;
+
+                if (password !== passwordRepeat) {
+                    e.preventDefault();
+                    alert('Пароли не совпадают');
+                }
+            });
+        }
+
+        // Автоматический переход между полями ввода кода
+        document.addEventListener('DOMContentLoaded', function () {
+            const codeInputs = document.querySelectorAll('input[name^="code_"]');
+
+            codeInputs.forEach((input, index) => {
+                input.addEventListener('input', function () {
+                    if (this.value.length === 1 && index < codeInputs.length - 1) {
+                        codeInputs[index + 1].focus();
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
